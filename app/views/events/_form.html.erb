@@ -1,0 +1,6 @@
+<%= simple_form_for @event, remote: true do |f| %>
+  <%= f.input :name %>
+  <%= f.input :start_at, default: @date_ref %>
+  <%= f.input :duration, collection: select_durations(15), include_blank: false %>
+  <%= f.button :submit %>
+<% end %>

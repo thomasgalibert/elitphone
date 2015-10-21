@@ -1,0 +1,71 @@
+nav.topbar{
+  @include flexbox();
+  @include flexdirection(row);
+  @include justify-content(center);
+  background: $header;
+  border-bottom: 2px solid darken($secondary, 10%);
+  ul.nav-left, ul.nav-middle, ul.nav-right{
+    @include flexbox();
+    list-style: none;
+    padding: 0;
+    margin: 0;
+    li{
+      display: inline;
+      a, a:visited{
+        color: $navbar-link;
+        font-weight: bold;
+        text-decoration: none;
+        display: inline-block;
+        padding: 1.5em 1em;
+        font-size: 1em;
+        &:hover, &.active{
+          color: darken($navbar-link, 20%);
+          border-bottom: 3px solid $navbar-link;
+        }
+        &.logo{
+          padding: 0;
+          margin: 0.5em 0.5em 0em 1.5em;
+          img{
+            height: 50px;
+          }
+        }
+        &.icon-link{
+          padding: 0;
+          padding-top: 0.5em;
+          &:hover{
+            border-bottom: none;
+          }
+        }
+      }
+      form{
+        margin: 0;
+        display: inline-block;
+        padding: 1em 0.5em;
+        input.ui-autocomplete-input, input[name="event_name"]{
+          width: 300px;
+          margin: 0;
+          padding: 0.3em 0.5em;
+          background: none;
+        }
+      }
+    }
+  }
+  ul.nav-left{
+    width: 25%;
+  }
+  ul.nav-middle{
+    width: 50%;
+    @include justify-content(center);
+  }
+  ul.nav-right{
+    width: 25%;
+    @include justify-content(flex-end);
+    padding-right: 1.5em;
+    li{
+      #timer{
+        font-family: "source-code-pro";
+        font-size: 0.8em;
+      }
+    }
+  }
+}

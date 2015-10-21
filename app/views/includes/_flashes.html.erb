@@ -1,0 +1,6 @@
+<% flash.each do |name, msg| %>
+  <%= content_tag :div, class: "alert--#{name}" do %>
+    <div class="alert-msg"><%= msg %></div>
+    <div class="alert-closing"><%= fa_icon "times-circle" %></div>
+  <% end %>
+<% end %>

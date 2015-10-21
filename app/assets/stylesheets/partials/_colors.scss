@@ -1,0 +1,31 @@
+// Main colors
+$primary: #866ec6;
+$accent: #FF4081;
+$secondary: #F5F5F5;
+$success: #2ebc74;
+$warning: #FFC107;
+$alert: #D84315;
+$header: #fcf9f4;
+$background: #f6efe5;
+$white: #FFF;
+$font-color: #333;
+
+// Anchors colors
+$primary-link: $primary;
+$secondary-link: $accent;
+$navbar-link: #939393;
+$blue-link: #1ea7d2;
+
+// Agenda colors
+$color-row-dashed: #BDBDBD;
+$color-row-hour: #8E8E8E;
+$bg-step: $header;
+$color-active-rdv: $header;
+
+// FORM COLORS
+
+$text-label: #505050;
+$bottom-input: #C9C9C9;
+$bg-login-form: lighten(#F2F2F2, 3%);
+$placeholders: darken(#F2F2F2, 25%);
+$main-font-color-reverse: #fff;

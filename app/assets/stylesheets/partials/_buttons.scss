@@ -1,0 +1,215 @@
+%btn{
+  display: inline-block;
+  @include border-radius-separate(3px,3px,3px,3px);
+  -webkit-appearance: none;
+  padding: 0.5em 1em;
+  margin: 0 0;
+  font-size: 1em;
+  i{
+    margin: 0 0.5em 0 0;
+  }
+  &:hover{
+    @include cursor();
+  }
+}
+
+@media screen and (max-width: $small-width){
+  %btn{
+    width: 100%;
+  }
+}
+
+%btn-tiny{
+  @include border-radius-separate(3px,3px,3px,3px);
+  padding: 0.3em 0.5em;
+  margin: 1em 0 0 0;
+  font-size: 0.7em;
+  i{
+    margin: 0 0.5em 0 0;
+  }
+}
+
+%remove-active-outline{
+  &:focus, &:active{
+    outline:none;
+  }
+}
+
+%default-bg{
+  background: $secondary;
+  color: find-text-color($secondary);
+  border: 1px solid darken($secondary, 20%);
+  @include box-shadow(0px, 5px, 0px, darken($secondary, 10%));
+  @include transition(all, 0.1s);
+  &:active{
+    @include box-shadow(0px, 2px, 0px, darken($secondary, 10%));
+    position:relative;
+    top: 5px;
+  }
+}
+
+%primary-bg{
+  background: $primary;
+  // color: find-text-color($primary); White is better
+  color: $white;
+  border: 1px solid darken($primary, 20%);
+  @include box-shadow(0px, 5px, 0px, darken($primary, 10%));
+  @include transition(all, 0.1s);
+  &:active{
+    @include box-shadow(0px, 2px, 0px, darken($primary, 10%));
+    position:relative;
+    top: 5px;
+  }
+}
+
+%success-bg{
+  position: relative;
+  background: $success;
+  color: find-text-color($success);
+  border: 1px solid darken($success, 20%);
+  @include box-shadow(0px, 5px, 0px, darken($success, 10%));
+  @include transition(all, 0.1s);
+  &:active{
+    @include box-shadow(0px, 2px, 0px, darken($success, 10%));
+    position:relative;
+    top: 5px;
+  }
+}
+
+%warning-bg{
+  background: $warning;
+  color: find-text-color($warning);
+  border: 1px solid darken($warning, 20%);
+  @include box-shadow(0px, 5px, 0px, darken($warning, 10%));
+  @include transition(all, 0.1s);
+  &:active{
+    @include box-shadow(0px, 2px, 0px, darken($warning, 10%));
+    position:relative;
+    top: 5px;
+  }
+}
+
+%alert-bg{
+  background: $alert;
+  color: find-text-color($alert);
+  border: 1px solid darken($alert, 20%);
+  @include box-shadow(0px, 5px, 0px, darken($alert, 10%));
+  @include transition(all, 0.1s);
+  &:active{
+    @include box-shadow(0px, 2px, 0px, darken($alert, 10%));
+    position:relative;
+    top: 5px;
+  }
+}
+
+%hover-bg-default{
+  background: darken($secondary, 5%);
+  border: 1px solid darken($secondary, 20%);
+}
+
+%hover-bg-primary{
+  background: darken($primary, 10%);
+  border: 1px solid darken($primary, 20%);
+}
+
+%hover-bg-success{
+  background: darken($success, 5%);
+  border: 1px solid darken($success, 20%);
+}
+
+%hover-bg-warning{
+  background: darken($warning, 5%);
+  border: 1px solid darken($warning, 20%);
+}
+
+%hover-bg-alert{
+  background: darken($alert, 5%);
+  border: 1px solid darken($alert, 20%);
+}
+
+////////////////////////////////////////////////////////////////
+
+.btn, a.btn{
+  &--default{
+    @extend %btn;
+    @extend %default-bg;
+    @extend %remove-active-outline;
+    &:hover{
+      @extend %hover-bg-default;
+    }
+  }
+  &--primary{
+    @extend %btn;
+    @extend %primary-bg;
+    @extend %remove-active-outline;
+    &:hover{
+      @extend %hover-bg-primary;
+    }
+  }
+  &--success{
+    @extend %btn;
+    @extend %success-bg;
+    @extend %remove-active-outline;
+    &:hover{
+      @extend %hover-bg-success;
+    }
+  }
+  &--warning{
+    @extend %btn;
+    @extend %warning-bg;
+    @extend %remove-active-outline;
+    &:hover{
+      @extend %hover-bg-warning;
+    }
+  }
+  &--alert{
+    @extend %btn;
+    @extend %alert-bg;
+    @extend %remove-active-outline;
+    &:hover{
+      @extend %hover-bg-alert;
+    }
+  }
+  &--tiny{
+    &--default{
+      @extend %btn-tiny;
+      @extend %remove-active-outline;
+      @extend %default-bg;
+      &:hover{
+        @extend %hover-bg-default;
+      }
+    }
+    &--primary{
+      @extend %btn-tiny;
+      @extend %remove-active-outline;
+      @extend %primary-bg;
+      &:hover{
+        @extend %hover-bg-primary;
+      }
+    }
+    &--success{
+      @extend %btn-tiny;
+      @extend %remove-active-outline;
+      @extend %success-bg;
+      &:hover{
+        @extend %hover-bg-success;
+      }
+    }
+    &--warning{
+      @extend %btn-tiny;
+      @extend %remove-active-outline;
+      @extend %warning-bg;
+      &:hover{
+        @extend %hover-bg-warning;
+      }
+    }
+    &--alert{
+      @extend %btn-tiny;
+      @extend %remove-active-outline;
+      @extend %alert-bg;
+      &:hover{
+        @extend %hover-bg-alert;
+      }
+    }
+  }
+}

@@ -1,0 +1,233 @@
+// STANDARD FORM //////////////////////////////
+
+form{
+  label, #{$all-text-inputs}, textarea{
+    display: block;
+    @include box-sizing();
+    width: 100%;
+    margin: 0;
+    padding: 0;
+  }
+
+  label{
+    color: $text-label;
+    font-size: 1.2em;
+    margin-bottom: 0.3em;
+    &.required{
+      font-weight: bold;
+    }
+  }
+
+  #{$all-text-inputs}, textarea{
+    padding: 0.5em 0em;
+    margin-bottom: 1.3em;
+    border: none;
+    border-bottom: 1px solid $bottom-input;
+    font-size: 1em;
+    background: #fff;
+    &:focus{
+      outline: 0;
+    }
+    @include input-placeholder{
+      color: $placeholders;
+    }
+    &:required{
+      border-bottom: 1px solid $bottom-input;
+      &:invalid{
+        border-bottom: 1px solid $warning;
+      }
+      &:valid{
+       border-bottom: 1px solid $success;
+      }
+    }
+  }
+
+  textarea{
+    height: 75px;
+    &.medium-area{
+      height: 150px;
+    }
+  }
+
+  select{
+    margin-bottom: 1.5em;
+  }
+
+  textarea#page_content{
+    border: 1px solid $bottom-input;
+    height: 800px;
+    padding: 1em;
+  }
+
+  .checkbox{
+    padding: 0.5em 0 0.5em 0;
+    @include flexbox();
+    @include flexdirection(row);
+    border-bottom: 1px solid $bottom-input;
+    margin-bottom: 1em;
+    input[type="checkbox"] {
+      margin: 0.5em 1em 0 0;
+    }
+  }
+
+  .field-select{
+    padding: 0.5em 0 0.5em 0;
+    border-bottom: 1px solid $bottom-input;
+    margin-bottom: 1em;
+  }
+
+  .additionals-links{
+    margin-top: 2.5em;
+    border-top: 1px solid darken($secondary, 10%);
+    text-align: center;
+    a, a:active{
+      color: $blue-link;
+      font-size: 0.8em;
+      text-decoration: underline;
+      padding: 0.5em;
+      &:hover{
+        color: $primary;
+      }
+    }
+  }
+
+  fieldset{
+    border: none;
+    legend{
+      display: block;
+      width: 100%;
+      text-align: center;
+      color: $main-font-color-reverse;
+      background: $primary;
+      margin-top: 2em;
+      margin-bottom: 1em;
+      padding: 1em 0 1em 0;
+      font-size: 1.2em;
+      @include border-radius();
+    }
+  }
+
+  .two-cols-fields{
+    @include flexbox();
+    @include flexdirection(row);
+    @include justify-content(space-between);
+    .field{
+      width: 50%;
+      input[type="text"]{
+        border-left: 1px solid $bottom-input;
+        padding-left: 0.5em;
+      }
+      &:first-child{
+        input[type="text"]{
+          border-left: none;
+        }
+      }
+    }
+  }
+}
+
+// NORMAL FORM //////////////////////////////
+
+form.simple_form{
+  padding: 1em;
+  position: relative;
+  #{$all-text-inputs}{
+    background: none;
+  }
+  .form-title{
+    text-align: center;
+    color: $font-color;
+    font-size: 2em;
+    margin-bottom: 1em;
+  }
+}
+
+@media screen and (min-width: $medium-width){
+  form.normal-form{
+    width: 80%;
+    margin: 0 auto;
+    input[type="submit"]{
+      width: 100%;
+    }
+  }
+}
+
+// SIGNUP FORM //////////////////////////////
+
+form.signup-form{
+  margin: 0 auto;
+  background: $white;
+  width: 70%;
+  padding: 1.5em;
+  border: 1px solid $bottom-input;
+  @include border-radius();
+  input[type="submit"]{
+    width: 100%;
+  }
+  &.login{
+    width: 50%;
+  }
+}
+
+@media screen and (max-width: $medium-width){
+  form.signup-form{
+    width: 90%;
+    margin: 0 auto;
+    input[type="submit"]{
+      width: 100%;
+    }
+    &.login{
+      width: 90%;
+    }
+  }
+}
+
+// ERRORS STYLING //////////////////////////
+
+.error_explanation{
+  border: 2px solid $alert;
+  background: lighten($alert, 55%);
+  padding: 1em;
+  margin-bottom: 1em;
+  h4{
+    padding: 0;
+    margin: 0 0 0.5em 0;
+  }
+  ul.no-bullet{
+    list-style: none;
+    padding: 0;
+    margin: 0;
+    li{
+
+    }
+  }
+}
+
+.field_with_errors{
+  label{
+    color: $alert;
+  }
+  #{$all-text-inputs}, textarea{
+    border-bottom: 1px solid $alert;
+  }
+}
+
+@media screen and (max-width: $medium-width){
+  form{
+    .two-cols-fields{
+      @include flexdirection(column);
+      .field{
+        width: 100%;
+        input[type="text"]{
+          border-left: none;
+          padding-left: 0em;
+        }
+        &:first-child{
+          input[type="text"]{
+            border-left: none;
+          }
+        }
+      }
+    }
+  }
+}

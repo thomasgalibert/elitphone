@@ -1,0 +1,15 @@
+.notification-stack{
+  position: relative;
+  .bell{
+
+  }
+  .number-bell{
+    position: absolute;
+    top: 0.3em;
+    right: 0;
+    @include circle(1.2em, $alert);
+    text-align: center;
+    color: $white;
+    font-size: 0.9em;
+  }
+}

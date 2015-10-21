@@ -1,0 +1,75 @@
+%alert{
+  padding: 0.5em 1em;
+  text-align: center;
+  font-size: 1em;
+  position: relative;
+  position: relative;
+  .alert-msg{
+
+  }
+  .alert-closing{
+    position: absolute;
+    top: 5px;
+    right: 5px;
+    font-size: 1.2em;
+    @include cursor();
+  }
+}
+
+%primary-alert-bg{
+  background: $primary;
+  color: find-text-color($primary);
+  border-bottom: 1px solid darken($primary, 20%);
+  border-top: 1px solid darken($primary, 20%);
+}
+
+%secondary-alert-bg{
+  background: $secondary;
+  color: find-text-color($secondary);
+  border-bottom: 1px solid darken($secondary, 20%);
+  border-top: 1px solid darken($secondary, 20%);
+}
+
+%success-alert-bg{
+  background: $success;
+  color: find-text-color($success);
+  border-bottom: 1px solid darken($success, 20%);
+  border-top: 1px solid darken($success, 20%);
+}
+
+%warning-alert-bg{
+  background: $warning;
+  color: find-text-color($warning);
+  border-bottom: 1px solid darken($warning, 20%);
+  border-top: 1px solid darken($warning, 20%);
+}
+
+%danger-alert-bg{
+  background: $alert;
+  color: find-text-color($alert);
+  border-bottom: 1px solid darken($alert, 20%);
+  border-top: 1px solid darken($alert, 20%);
+}
+
+.alert{
+  &--primary{
+    @extend %alert;
+    @extend %primary-alert-bg;
+  }
+  &--secondary{
+    @extend %alert;
+    @extend %secondary-alert-bg;
+  }
+  &--success{
+    @extend %alert;
+    @extend %success-alert-bg;
+  }
+  &--warning{
+    @extend %alert;
+    @extend %warning-alert-bg;
+  }
+  &--danger{
+    @extend %alert;
+    @extend %danger-alert-bg;
+  }
+}

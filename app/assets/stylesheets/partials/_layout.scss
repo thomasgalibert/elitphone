@@ -1,0 +1,100 @@
+html, body{
+  background: $background;
+}
+
+.wrapper{
+  background: $background;
+  @include flexbox();
+  section.main-content{
+    padding: 0.5em 1.5em;
+    width: 100%;
+    @include transition(width 0.1s ease);
+  }
+  section#offcanvas{
+    width: 0;
+    position: relative;
+    @include transition(width 0.1s ease);
+    background: $header;
+    border-left: 1px solid darken($secondary, 10%);
+    .top-canvas{
+      @include flexbox();
+      @include flexdirection(row);
+      @include justify-content(space-between);
+      @include align-items(center);
+      padding: 0.5em;
+      background: darken($primary, 10%);
+      border-bottom: 1px solid darken($primary, 20%);
+      h2.title-canvas{
+        color: #FFF;
+        font-size: 1.2em;
+        margin: 0;
+        padding: 0;
+      }
+      .remove-form{
+        @include circle(2em, $accent);
+        @include cursor;
+        @include order(2);
+        text-align: center;
+        line-height: 2em;
+        color: #FFF;
+        font-weight: bold;
+      }
+    }
+
+    &.target{
+      width: 30%;
+      .remove-form{
+        display: block;
+        z-index: 99;
+      }
+    }
+    &.target + section.main-content{
+      width: 70%;
+    }
+  }
+}
+
+// Differents columns
+
+.cols{
+  @include flexbox();
+  @include flexdirection(row);
+  @include justify-content(space-between);
+}
+
+.cols > * {
+  width: 100%;
+}
+
+@media screen and (max-width: $medium-width){
+  .cols{
+    @include flexdirection(column);
+  }
+}
+
+// Footer
+
+footer{
+  margin-top: 2em;
+  border-top: 1px solid darken($secondary, 10%);
+  ul{
+    padding: 1em 0em;
+    margin: 0;
+    text-align: center;
+    li{
+      display: inline;
+      font-size: 0.8em;
+      a, a:visited{
+        color: $blue-link;
+        text-decoration: underline;
+        padding: 0em 1em;
+        &:hover{
+          color: $primary;
+        }
+      }
+      i{
+        color: $blue-link;
+      }
+    }
+  }
+}

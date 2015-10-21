@@ -1,0 +1,100 @@
+.week{
+  margin-top: 1em;
+  @include flexbox();
+  @include flexdirection(row);
+  @include justify-content(space-between);
+  background: $white;
+  padding: 0.5em;
+  @include border-radius(5px);
+  border: 2px solid lighten(#333, 70%);
+  .day-row{
+    width: 100%;
+    @include flexbox();
+    @include flexdirection(column);
+    .day-number{
+      font-size: 0.8em;
+      padding: 0.5em;
+      text-align: center;
+      background: $success;
+      color: find-text-color($success);
+      a, a:visited, a:hover{
+        text-decoration: none;
+        font-weight: bold;
+        color: find-text-color($success);
+      }
+      &.week-end, &.week-end a{
+        background: $warning;
+        color: find-text-color($warning);
+      }
+      &.today, &.today a{
+        background: $accent;
+        color: #FFF;
+      }
+      &.holiday, &.holiday a{
+        background: #000;
+        color: #FFF;
+      }
+    }
+    &.hour-row{
+      width: 25%;
+    }
+    .step{
+      border-bottom: 1px dashed $color-row-dashed;
+      border-left: 1px solid $color-row-dashed;
+      border-right: 1px solid $color-row-dashed;
+      padding: 0;
+      margin: 0;
+      &:hover{
+        background: $bg-step;
+        @include cursor();
+      }
+      &.hour{
+        border-top: 2px solid $color-row-hour;
+      }
+      &.time{
+        background: $success;
+        border-bottom: 1px dashed $success;
+      }
+      &.timehour{
+        background: $success;
+        border-bottom: 1px dashed $success;
+        &.hour{
+          border-top: 2px solid $success;
+        }
+      }
+      &:first-child{
+        border-bottom: none;
+      }
+      &.last-minutes{
+        border-bottom: none;
+      }
+      .rdv{
+        height: 2em;
+        font-size: 0.8em;
+        line-height: 1em;
+        padding: 0.5em 0.3em;
+        margin: 0;
+        position: relative;
+        &.active{
+          background: $color-active-rdv;
+        }
+        .timestamp{
+          position: absolute;
+          top: -6px;
+          right: 3px;
+          font-size: 0.9em;
+          background: none;
+          color: #000;
+          &.hourstamp{
+            font-size: 1.1em;
+          }
+        }
+      }
+      &.selected{
+        background: $primary;
+      }
+    }
+  }
+}
+
+

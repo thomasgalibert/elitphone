@@ -1,0 +1,25 @@
+body{
+  font-family: "proxima-nova";
+}
+
+p{
+  margin: 0.5em 0;
+  padding: 0;
+}
+
+a, a:visited{
+  text-decoration: none;
+  color: $primary;
+}
+
+.success{
+  color: $success;
+}
+
+.primary{
+  color: $primary;
+}
+
+.icon-nav{
+  font-size: 1.5em;
+}

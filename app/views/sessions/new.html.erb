@@ -1,0 +1,27 @@
+<% content_for :title, t('session.new') %>
+
+<%= form_tag sessions_path, class: "simple_form signup-form login" do %>
+
+  <div class="form-title">
+    <%= fa_stacked_icon "sign-in inverse", base: "circle", class: "fa-1x" %>
+    <%= t('session.new') %>
+  </div>
+
+  <div class="field">
+    <%= label_tag :email, t('simple_form.labels.user.email') %>
+    <%= email_field :email, params[:email], placeholder: t('simple_form.placeholders.user.email') %>
+  </div>
+
+  <div class="field">
+    <%= label_tag :password, t('simple_form.labels.user.password') %>
+    <%= password_field_tag :password, '', placeholder: t('simple_form.placeholders.user.password') %>
+  </div>
+
+  <%= submit_tag t('session.login'), class: "btn--success" %>
+
+  <div class="additionals-links">
+    <%= link_to t('account.lost_password'), '#' %>
+    <%= link_to t('account.new_account'), signup_path %>
+  </div>
+
+<% end %>

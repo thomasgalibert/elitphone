@@ -1,0 +1,68 @@
+fr:
+  simple_form:
+    "yes": 'Oui'
+    "no": 'Non'
+    required:
+      text: 'Requis'
+      mark: '*'
+      # You can uncomment the line below if you need to overwrite the whole required html.
+      # When using html, text and mark won't be used.
+      # html: '<abbr title="required">*</abbr>'
+    error_notification:
+      default_message: "Nous avons trouvés des erreurs, jetez un coup d'oeil :"
+    # labels:
+    #   user:
+    #     username: 'User name'
+    #     password: 'Password'
+    # hints:
+    #   user:
+    #     username: 'User name to sign in.'
+    #     password: 'No special characters, please.'
+    # placeholders:
+    #   user:
+    #     username: 'Your username'
+    #     password: '****'
+    # include_blanks:
+    #   user:
+    #     age: 'Rather not say'
+    # prompts:
+    #   user:
+    #     gender: 'Select your gender'
+    labels:
+      company:
+        name: "Le nom de la société"
+        email: "L'email de la société"
+        cgv: "Je déclare avoir lu accepté les %{link}"
+        number: "Numéro SIRET (14 chiffres)"
+        tel: "Numéro de téléphone"
+        user_email: "L'email de l'utilisateur principal"
+      users:
+        email: "L'email de l'utilisateur principal"
+        name: "Nom"
+        firstname: "Prénom"
+        password: "Mot de passe"
+        password_confirmation: "Confirmation du mot de passe"
+      user:
+        email: "Votre email"
+        password: "Votre mot de passe"
+      event:
+        name: "Libellé de l'événement"
+        start_at: "Début"
+        end_at: "Fin"
+        duration: "Durée"
+    placeholders:
+      company:
+        name: "SARL Callme"
+        email: "contact@callme.com"
+        number: "123 456 567 67890"
+        tel: "01 89 98 76 65"
+        user_email: "directeur@callme.com"
+      users:
+        email: "nicolas.martin@gmail.company"
+        name: "MARTIN"
+        firstname: "Nicolas"
+        password: "au moins 8 caractères"
+        password_confirmation: "au moins 8 caractères"
+      user:
+        email: "nicolas.martin@gmail.com"
+        password: "*****************"

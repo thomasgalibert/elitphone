@@ -1,0 +1,32 @@
+<% content_for :title, t('company.new') %>
+
+<%= simple_form_for @company, html: {class: "signup-form"} do |f| %>
+
+  <%= render "/includes/errors", object: @company %>
+
+  <div class="form-title">
+    <%= fa_stacked_icon "pencil inverse", base: "circle", class: "fa-1x" %>
+    Créer un nouveau compte
+  </div>
+
+  <div class="cols">
+
+    <fieldset>
+      <legend>Société</legend>
+      <%= f.input :name, autofocus: true %>
+      <%= f.input :number %>
+      <%= f.input :email %>
+      <%= f.input :tel %>
+      <%= f.input :cgv, label: t('simple_form.labels.company.cgv', link: link_to(t('cgv'), signup_path, target: "_blank")).html_safe %>
+    </fieldset>
+
+    <fieldset>
+      <legend>Utilisateur principal</legend>
+      <%= f.simple_fields_for :users do |builder| %>
+        <%= render 'user_fields', f: builder %>
+      <% end %>
+    </fieldset>
+  </div>
+
+  <%= f.submit class: "btn--success" %>
+<% end %>
