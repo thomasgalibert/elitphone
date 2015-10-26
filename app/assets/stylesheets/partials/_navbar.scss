@@ -36,6 +36,14 @@ nav.topbar{
             border-bottom: none;
           }
         }
+        &.icon-link-logo{
+          padding: 0;
+          padding-top: 0.5em;
+          margin-left: 1.5em;
+          &:hover{
+            border-bottom: none;
+          }
+        }
       }
       form{
         margin: 0;
@@ -63,7 +71,7 @@ nav.topbar{
     padding-right: 1.5em;
     li{
       #timer{
-        font-family: "source-code-pro";
+        font-family: "FaktSoft";
         font-size: 0.8em;
       }
     }

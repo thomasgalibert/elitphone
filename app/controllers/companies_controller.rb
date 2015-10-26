@@ -2,6 +2,7 @@ class CompaniesController < ApplicationController
   def new
     @company = Company.new
     @company.users.new
+    render layout: "login"
   end
 
   def create

@@ -1,5 +1,25 @@
+@font-face {
+  font-family: 'FaktSoftCon';
+  src: font-url('FaktSoftSmConPro-Normal.eot');
+  src: font-url('FaktSoftSmConPro-Normal.eot?#iefix') format('embedded-opentype'),
+       font-url('FaktSoftSmConPro-Normal.woff') format('woff'),
+       font-url('FaktSoftSmConPro-Normal.ttf') format('truetype');
+  font-weight: normal;
+  font-style: normal;
+}
+
+@font-face {
+  font-family: 'FaktSoft';
+  src: font-url('FaktSoftPro-Normal.eot');
+  src: font-url('FaktSoftPro-Normal.eot?#iefix') format('embedded-opentype'),
+       font-url('FaktSoftPro-Normal.woff') format('woff'),
+       font-url('FaktSoftPro-Normal.ttf') format('truetype');
+  font-weight: normal;
+  font-style: normal;
+}
+
 body{
-  font-family: "proxima-nova";
+  font-family: "FaktSoft", 'FaktSoftCon', helvetica;
 }
 
 p{
@@ -10,6 +30,9 @@ p{
 a, a:visited{
   text-decoration: none;
   color: $primary;
+  &:hover{
+    color: $hover;
+  }
 }
 
 .success{
@@ -20,6 +43,28 @@ a, a:visited{
   color: $primary;
 }
 
+.black{
+  color: #000;
+}
+
 .icon-nav{
   font-size: 1.5em;
+}
+
+.login-svg-wrapper{
+  width: 220px;
+  margin: 0 auto;
+  padding: 2em 0em 0.5em 0em;
+
+  .login-svg{
+
+  }
+}
+
+h1{
+  color: $primary;
+  text-align: center;
+  font-size: 3em;
+  margin: 0.1em 0em 0.5em 0em;
+  padding: 0;
 }

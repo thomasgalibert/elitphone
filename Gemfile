@@ -38,6 +38,7 @@ gem 'simple_form', :git => 'git://github.com/plataformatec/simple_form.git'
 gem "holidays"
 gem 'jquery-ui-rails'
 gem 'rails4-autocomplete'
+gem 'inline_svg'
 # Use Unicorn as the app server
 # gem 'unicorn'
 

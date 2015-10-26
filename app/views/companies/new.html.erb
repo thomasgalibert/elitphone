@@ -1,4 +1,6 @@
-<% content_for :title, t('company.new') %>
+<h1><%= t('company.new') %></h1>
+
+<% content_for :title, t('company.new_details') %>
 
 <%= simple_form_for @company, html: {class: "signup-form"} do |f| %>
 
@@ -6,13 +8,13 @@
 
   <div class="form-title">
     <%= fa_stacked_icon "pencil inverse", base: "circle", class: "fa-1x" %>
-    Créer un nouveau compte
+    <%= t('company.new_details') %>
   </div>
 
   <div class="cols">
 
     <fieldset>
-      <legend>Société</legend>
+      <legend><%= t('company.legends.company') %></legend>
       <%= f.input :name, autofocus: true %>
       <%= f.input :number %>
       <%= f.input :email %>
@@ -21,7 +23,7 @@
     </fieldset>
 
     <fieldset>
-      <legend>Utilisateur principal</legend>
+      <legend><%= t('company.legends.user') %></legend>
       <%= f.simple_fields_for :users do |builder| %>
         <%= render 'user_fields', f: builder %>
       <% end %>
@@ -29,4 +31,9 @@
   </div>
 
   <%= f.submit class: "btn--success" %>
+
+  <div class="additionals-links">
+    <%= link_to t('session.new'), login_path %>
+    <%= link_to t('account.lost_password'), '#' %>
+  </div>
 <% end %>

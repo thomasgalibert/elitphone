@@ -257,7 +257,11 @@ fr:
     new_account: "Pas encore de compte ?"
 
   company:
-    new: "Nouveau compte"
+    new: "Enregistrer un nouveau compte"
+    new_details: "Renseignez les informations suivantes"
+    legends:
+      company: "Votre société"
+      user: "Utilisateur pincipal (administrateur)"
 
   event:
     new: "Ajouter un rendez-vous"
