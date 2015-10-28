@@ -1,14 +1,7 @@
 <!DOCTYPE html>
 <html>
 <head>
-  <title><%= content_for?(:title) ? "#{yield(:title)} - ELITEPHONE" : "ELITEPHONE - Calendrier" %></title>
-  <%= favicon_link_tag 'favicon.ico' %>
-  <!--Let browser know website is optimized for mobile-->
-  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no"/>
-  <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track' => true %>
-  <%= javascript_include_tag 'application', 'data-turbolinks-track' => true %>
-
-  <%= csrf_meta_tags %>
+  <%= render 'includes/head' %>
 </head>
 <body>
 
@@ -16,12 +9,8 @@
 
   <div class="wrapper">
 
-    <section class="main-content" id="week">
+    <section class="main-content">
       <%= yield %>
-    </section>
-
-    <section class="offcanvas" id="offcanvas">
-      <%= render 'includes/offcanvas' %>
     </section>
 
   </div>

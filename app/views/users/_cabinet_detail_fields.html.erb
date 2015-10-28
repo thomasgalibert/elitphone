@@ -1,0 +1,15 @@
+<%= f.input :name %>
+
+<%= f.input :specialty,
+    collection: CabinetDetail::SPECIALTIES,
+    include_blank: false %>
+
+<%= f.input :street %>
+
+<div class="two-cols-fields">
+  <%= f.input :zipcode %>
+  <%= f.input :town %>
+</div>
+
+<%= f.input :tel %>
+

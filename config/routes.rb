@@ -1,5 +1,7 @@
 Rails.application.routes.draw do
 
+  resources :cabinet_details
+
   # USERS
   resources :users
 

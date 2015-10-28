@@ -1,0 +1,7 @@
+<%= form_tag '#' do %>
+  <%= autocomplete_field_tag :event_name,
+      '', autocomplete_event_name_events_path,
+      :size => 75,
+      data: {"autocomplete-label" => "..., rien du tout"},
+      placeholder: "rechercher cabinet" %>
+<% end %>

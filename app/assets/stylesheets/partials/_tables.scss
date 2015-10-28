@@ -1,0 +1,44 @@
+table{
+  width: 100%;
+  border-collapse: collapse;
+  th, td{
+    text-align: left;
+    padding: 5px 7px;
+  }
+  th{
+    font-weight: bold;
+    font-size: 1.2em;
+    border-bottom: 1px solid $bottom-input;
+  }
+  td{
+    font-size: 0.9em;
+    border-bottom: 1px dashed $bottom-input;
+    &.bold{
+      font-weight: bold;
+    }
+  }
+  tbody{
+    tr{
+      &:hover{
+        background: $secondary;
+      }
+    }
+  }
+}
+
+#users{
+  margin: 0 auto;
+  margin-bottom: 2em;
+  margin-top: 1em;
+  width: 80%;
+  background: $white;
+  padding: 1.5em;
+  border: 1px solid $bottom-input;
+  @include border-radius();
+}
+
+@media screen and (max-width: $medium-width){
+  #users{
+    width: 95%;
+  }
+}

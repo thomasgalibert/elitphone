@@ -21,7 +21,6 @@ html, body{
       @include flexdirection(row);
       @include justify-content(space-between);
       @include align-items(center);
-      padding: 0.5em;
       background: darken($primary, 10%);
       border-bottom: 1px solid darken($primary, 20%);
       h2.title-canvas{
@@ -31,6 +30,7 @@ html, body{
         padding: 0;
       }
       .remove-form{
+        display: none;
         @include circle(2em, $accent);
         @include cursor;
         @include order(2);
@@ -43,6 +43,9 @@ html, body{
 
     &.target{
       width: 30%;
+      h2.title-canvas{
+        padding: 0.5em;
+      }
       .remove-form{
         display: block;
         z-index: 99;

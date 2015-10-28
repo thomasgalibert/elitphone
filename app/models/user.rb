@@ -11,9 +11,14 @@ class User < ActiveRecord::Base
 
   # Relationships
   belongs_to :company, optional: true
+  has_one :cabinet_detail
+  accepts_nested_attributes_for :cabinet_detail
 
   # Callbacks
   before_save :check_is_admin?
+
+  # Scopes
+  scope :cabinets, -> { where(role: "cabinet") }
 
   # Check if admin user exists for this company, if not
   # creates one
@@ -21,5 +26,9 @@ class User < ActiveRecord::Base
     if self.company.users.where(role: "admin").count == 0
       self.role = "admin"
     end
+  end
+
+  def longname
+    "#{firstname} #{name}"
   end
 end

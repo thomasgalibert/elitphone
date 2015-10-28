@@ -19,8 +19,8 @@ nav.topbar{
         padding: 1.5em 1em;
         font-size: 1em;
         &:hover, &.active{
+          @include box-shadow(inset 0px 0px 0px 10px $navbar-link);
           color: darken($navbar-link, 20%);
-          border-bottom: 3px solid $navbar-link;
         }
         &.logo{
           padding: 0;

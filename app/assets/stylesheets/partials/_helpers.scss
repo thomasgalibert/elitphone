@@ -354,7 +354,7 @@ $all-text-inputs: $unquoted-inputs-list;
 
 @function find-text-color($color) {
   @if (lightness($color) > 50) {
-    @return #333333; // Lighter backgorund, return dark color
+    @return #333333; // Lighter background, return dark color
   } @else {
     @return #ffffff; // Darker background, return light color
   }

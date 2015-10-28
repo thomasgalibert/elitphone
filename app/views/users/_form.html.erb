@@ -1,0 +1,40 @@
+<%= simple_form_for [current_company, @user], html: {class: "signup-form"} do |f| %>
+
+  <%= render "/includes/errors", object: @user %>
+
+  <div class="form-title">
+    <%= fa_stacked_icon "pencil inverse", base: "circle", class: "fa-1x" %>
+    <%= t('user.cabinet_new') %>
+  </div>
+
+  <div class="cols">
+
+    <fieldset>
+      <legend><%= t('user.legends.cabinet_perso') %></legend>
+      <%= f.input :email, autofocus: true %>
+      <div class="two-cols-fields">
+        <%= f.input :name %>
+        <%= f.input :firstname %>
+      </div>
+      <%= f.input :role, as: :hidden %>
+      <%= f.input :password %>
+      <%= f.input :password_confirmation %>
+    </fieldset>
+
+    <fieldset>
+      <legend><%= t('user.legends.cabinet_details') %></legend>
+      <%= f.simple_fields_for :cabinet_detail do |builder| %>
+        <%= render 'cabinet_detail_fields', f: builder %>
+      <% end %>
+    </fieldset>
+
+  </div>
+
+  <%= f.submit class: "btn--success" %>
+
+  <div class="additionals-links">
+    <%= link_to "&larr;".html_safe+t('user.cabinets_back'),
+        company_users_path(current_company, role: "cabinet") %>
+  </div>
+
+<% end %>

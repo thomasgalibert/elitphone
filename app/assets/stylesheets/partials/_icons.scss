@@ -5,11 +5,11 @@
   }
   .number-bell{
     position: absolute;
-    top: 0.3em;
+    top: 0.2em;
     right: 0;
-    @include circle(1.2em, $alert);
+    @include circle(1.4em, $alert);
     text-align: center;
     color: $white;
-    font-size: 0.9em;
+    font-size: 0.8em;
   }
 }

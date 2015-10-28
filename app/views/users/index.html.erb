@@ -1,0 +1,26 @@
+<% content_for(:title, t('user.list_cabinets')) %>
+
+<div id="users">
+  <table class="users-table">
+    <thead>
+      <tr>
+        <th><%= t('user.ths.cabinet_name') %></th>
+        <th><%= t('user.ths.email') %></th>
+        <th><%= t('user.ths.longname') %></th>
+        <th><%= t('user.ths.tel') %></th>
+        <th colspan="4"></th>
+      </tr>
+    </thead>
+
+    <tbody>
+      <%= render @users %>
+    </tbody>
+  </table>
+</div>
+
+<div class="buttons center">
+  <%= link_to_icon t('user.cabinet_new'),
+      new_company_user_path(current_company, role: "cabinet"),
+      class: "btn--primary", icon: "plus-circle" %>
+</div>
+

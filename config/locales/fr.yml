@@ -252,6 +252,9 @@ fr:
       next: "suivant &rarr;"
       truncate: "&hellip;"
 
+  menu:
+    cabinets: "Cabinets"
+
   account:
     lost_password: "Mot de passe perdu ?"
     new_account: "Pas encore de compte ?"
@@ -268,6 +271,21 @@ fr:
     prompts:
       duration: "-- sélectionner la durée --"
 
+  user:
+    cabinet_new: "Ajouter un cabinet"
+    cabinets_back: " Retour à la liste des cabinets"
+    list_cabinets: "Liste des cabinets"
+    legends:
+      cabinet_perso: "Information utilisateur"
+      cabinet_details: "Détails du cabinet"
+    flashes:
+      create: "Cabinet enregistré avec succès !"
+    ths:
+      cabinet_name: "Nom du cabinet"
+      email: "Email"
+      longname: "Nom du médecin"
+      tel: "Téléphone"
+
   helpers:
     submit:
       event:
@@ -276,3 +294,6 @@ fr:
       company:
         create: "Créez votre compte !"
         update: "Modifier les informations du compte"
+      user:
+        create: "Enregistrer les informations"
+        update: "Mettre à jour les informations"

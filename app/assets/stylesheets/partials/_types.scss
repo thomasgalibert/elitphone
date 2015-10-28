@@ -51,6 +51,42 @@ a, a:visited{
   font-size: 1.5em;
 }
 
+.icon-action{
+  font-size: 0.8em;
+  &.show{
+    i{
+      color: $success;
+      &.fa-inverse{
+        color: find-text-color($success);
+      }
+    }
+  }
+  &.info{
+    i{
+      color: $primary;
+      &.fa-inverse{
+        color: find-text-color($primary);
+      }
+    }
+  }
+  &.edit{
+    i{
+      color: $warning;
+      &.fa-inverse{
+        color: find-text-color($warning);
+      }
+    }
+  }
+  &.destroy{
+    i{
+      color: $alert;
+      &.fa-inverse{
+        color: find-text-color($alert);
+      }
+    }
+  }
+}
+
 .login-svg-wrapper{
   width: 220px;
   margin: 0 auto;
@@ -67,4 +103,10 @@ h1{
   font-size: 3em;
   margin: 0.1em 0em 0.5em 0em;
   padding: 0;
+}
+
+.buttons{
+  &.center{
+    text-align: center;
+  }
 }

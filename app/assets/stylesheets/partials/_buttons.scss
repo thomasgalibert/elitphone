@@ -105,26 +105,31 @@
 %hover-bg-default{
   background: darken($secondary, 5%);
   border: 1px solid darken($secondary, 20%);
+  color: find-text-color($secondary);
 }
 
 %hover-bg-primary{
   background: darken($primary, 10%);
   border: 1px solid darken($primary, 20%);
+  color: find-text-color($primary);
 }
 
 %hover-bg-success{
   background: darken($success, 5%);
   border: 1px solid darken($success, 20%);
+  color: find-text-color($success);
 }
 
 %hover-bg-warning{
   background: darken($warning, 5%);
   border: 1px solid darken($warning, 20%);
+  color: find-text-color($warning);
 }
 
 %hover-bg-alert{
   background: darken($alert, 5%);
   border: 1px solid darken($alert, 20%);
+  color: find-text-color($alert);
 }
 
 ////////////////////////////////////////////////////////////////
