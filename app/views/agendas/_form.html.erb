@@ -1,0 +1,26 @@
+<%= simple_form_for [@cabinet, @agenda], html: {class: "signup-form small"} do |f| %>
+
+  <%= render "/includes/errors", object: @agenda %>
+
+  <div class="form-title">
+    <%= fa_stacked_icon "calendar-plus-o inverse", base: "circle", class: "fa-1x" %>
+    <%= display_title_resource(@agenda) %>
+  </div>
+
+  <fieldset>
+    <legend><%= t('agenda.legends.parameters') %></legend>
+    <%= f.input :name %>
+    <%= f.input :step %>
+    <%= f.input :start_hour %>
+    <%= f.input :end_hour %>
+    <%= f.input :company_id, as: :hidden %>
+  </fieldset>
+
+  <%= f.submit class: "btn--success" %>
+
+  <div class="additionals-links">
+    <%= link_to "&larr;".html_safe+t('user.agendas_back'),
+        user_agendas_path(@cabinet) %>
+  </div>
+
+<% end %>

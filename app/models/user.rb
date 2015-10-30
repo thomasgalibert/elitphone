@@ -13,6 +13,7 @@ class User < ActiveRecord::Base
   belongs_to :company, optional: true
   has_one :cabinet_detail
   accepts_nested_attributes_for :cabinet_detail
+  has_many :agendas
 
   # Callbacks
   before_save :check_is_admin?
@@ -26,6 +27,10 @@ class User < ActiveRecord::Base
     if self.company.users.where(role: "admin").count == 0
       self.role = "admin"
     end
+  end
+
+  def admin?
+    self.role == "admin" ? true : false
   end
 
   def longname

@@ -1,13 +1,18 @@
 Rails.application.routes.draw do
 
+  resources :agendas
+
   resources :cabinet_details
 
   # USERS
-  resources :users
+  resources :users do
+    resources :agendas
+  end
 
   # COMPANIES
   resources :companies do
     resources :users
+    resources :agendas
   end
 
   # EVENTS

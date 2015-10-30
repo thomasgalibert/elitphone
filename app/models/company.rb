@@ -11,4 +11,5 @@ class Company < ActiveRecord::Base
     # Relationships
     has_many :users, autosave: true
     accepts_nested_attributes_for :users
+    has_many :agendas
 end

@@ -57,6 +57,11 @@ module ApplicationHelper
     content_for(:title) ? content_tag(:h1, content_for(:title)) : ""
   end
 
+  # Display title form for resource depending on new record or not
+  def display_title_resource(object)
+    object.new_record? ? t("#{object.class.name.underscore}.new") : t("#{object.class.name.underscore}.edit")
+  end
+
   private
 
     def create_icons_stacks(icon, number)

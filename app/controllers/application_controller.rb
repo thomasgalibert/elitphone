@@ -4,6 +4,12 @@ class ApplicationController < ActionController::Base
   protect_from_forgery with: :exception
   helper_method :current_user
   helper_method :current_company
+  check_authorization
+
+  rescue_from CanCan::AccessDenied do |exception|
+    flash[:warning] = t('form.non_authorized')
+    redirect_to login_url
+  end
 
   private
 

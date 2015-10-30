@@ -1,9 +1,8 @@
+<% content_for :title, t('session.new') %>
+
 <div class="login-svg-wrapper">
   <object type="image/svg+xml" data="<%= image_path("logo.svg") %>" class="login-svg">Your browser does not support SVG</object>
 </div>
-
-
-<% content_for :title, t('session.new') %>
 
 <%= form_tag sessions_path, class: "simple_form signup-form login" do %>
 

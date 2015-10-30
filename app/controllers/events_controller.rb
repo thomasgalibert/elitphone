@@ -1,5 +1,6 @@
 class EventsController < ApplicationController
   autocomplete :event, :name, full: true
+  authorize_resource
   before_action :set_event, only: [:show, :edit, :update, :destroy]
 
   def index

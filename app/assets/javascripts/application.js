@@ -15,6 +15,7 @@
 //= require jquery_ujs
 //= require jquery-ui
 //= require autocomplete-rails
+//= require jasny-bootstrap.min
 //= require turbolinks
 //= require channels
 //= require_tree .

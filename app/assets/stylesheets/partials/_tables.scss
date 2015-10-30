@@ -37,8 +37,19 @@ table{
   @include border-radius();
 }
 
+#agendas{
+  margin: 0 auto;
+  margin-bottom: 2em;
+  margin-top: 1em;
+  width: 60%;
+  background: $white;
+  padding: 1.5em;
+  border: 1px solid $bottom-input;
+  @include border-radius();
+}
+
 @media screen and (max-width: $medium-width){
-  #users{
+  #users, #agendas{
     width: 95%;
   }
 }

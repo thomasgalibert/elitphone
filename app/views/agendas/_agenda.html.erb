@@ -1,0 +1,22 @@
+<tr id="agenda-<%= agenda.id %>">
+  <td class="bold"><%= agenda.name %></td>
+  <td><%=l agenda.created_at %></td>
+
+  <!-- Actions Links -->
+  <td><%= link_to_stack_icon '',
+          user_agenda_path(@cabinet, agenda),
+          icon: "search", class: "icon-action show" %>
+  </td>
+  <td><%= link_to_stack_icon '',
+          edit_user_agenda_path(@cabinet, agenda),
+          icon: "pencil", class: "icon-action edit" %>
+  </td>
+  <td><%= link_to_stack_icon '',
+          user_agenda_path(@cabinet, agenda),
+          method: :delete,
+          data: {confirm: t('form.confirm')},
+          icon: "times", class: "icon-action destroy" %>
+  </td>
+
+  <!-- End actions links -->
+</tr>

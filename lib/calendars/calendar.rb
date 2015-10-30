@@ -1,4 +1,4 @@
-class Calendar < Struct.new(:view, :date, :step, :events, :start_hour, :end_hour)
+class Calendar < Struct.new(:view, :date, :step, :events, :start_hour, :end_hour, :agenda)
 
   delegate :content_tag, :l, :t, :fa_icon, :link_to, to: :view
 ##############################################################################
@@ -109,9 +109,10 @@ class Calendar < Struct.new(:view, :date, :step, :events, :start_hour, :end_hour
     end
 
     def build_day_link(day)
+      cabinet = agenda.user
       links = ""
       if day.monday?
-        links << link_to(t('prev_arrow'), view.events_path(set_date: day-1))
+        links << link_to(t('prev_arrow'), view.user_agenda_path(cabinet, agenda, set_date: day-1))
         links << "&nbsp;"
         links << l(day, format: :calendar)
         links << "&nbsp;" if day.holiday?(:fr)
@@ -121,7 +122,7 @@ class Calendar < Struct.new(:view, :date, :step, :events, :start_hour, :end_hour
         links << "&nbsp;" if day.holiday?(:fr)
         links << l(day, format: :calendar)
         links << "&nbsp;"
-        links << link_to(t('next_arrow'), view.events_path(set_date: day+1))
+        links << link_to(t('next_arrow'), view.user_agenda_path(cabinet, agenda, set_date: day+1))
       else
         links << fa_icon("gift") if day.holiday?(:fr)
         links << "&nbsp;" if day.holiday?(:fr)

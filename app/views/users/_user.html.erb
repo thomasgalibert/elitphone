@@ -1,4 +1,4 @@
-<tr>
+<tr id="user-<%= user.id %>">
   <td class="bold"><%= user.cabinet_detail.name %></td>
   <td><%= user.email %></td>
   <td><%= user.longname %></td>
@@ -20,7 +20,7 @@
           icon: "times", class: "icon-action destroy" %>
   </td>
   <td><%= link_to_stack_icon '',
-          '#',
+          user_agendas_path(user),
           icon: "calendar", class: "icon-action info" %>
   </td>
   <!-- End actions links -->

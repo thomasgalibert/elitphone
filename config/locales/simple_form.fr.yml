@@ -10,24 +10,6 @@ fr:
       # html: '<abbr title="required">*</abbr>'
     error_notification:
       default_message: "Nous avons trouvés des erreurs, jetez un coup d'oeil :"
-    # labels:
-    #   user:
-    #     username: 'User name'
-    #     password: 'Password'
-    # hints:
-    #   user:
-    #     username: 'User name to sign in.'
-    #     password: 'No special characters, please.'
-    # placeholders:
-    #   user:
-    #     username: 'Your username'
-    #     password: '****'
-    # include_blanks:
-    #   user:
-    #     age: 'Rather not say'
-    # prompts:
-    #   user:
-    #     gender: 'Select your gender'
     labels:
       company:
         name: "Le nom de la société"
@@ -61,6 +43,11 @@ fr:
         town: "Ville"
         specialty: "Spécialité"
         tel: "Téléphone"
+      agenda:
+        name: "Description de l'agenda"
+        step: "Intervalle de l'agenda en minutes"
+        start_hour: "Heure de début"
+        end_hour: "Heure de fin"
     placeholders:
       company:
         name: "SARL Callme"
@@ -86,6 +73,11 @@ fr:
         town: "PARIS"
         specialty: "Spécialité"
         tel: "06 98 68 98 45"
+      agenda:
+        name: "patientèle du Dr Martin"
+        step: "15"
+        start_hour: "8"
+        end_hour: "18"
     options:
       user:
         role:

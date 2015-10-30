@@ -1,0 +1,24 @@
+<% content_for(:title, "#{t('user.list_agendas')} - #{@cabinet.cabinet_detail.name}") %>
+
+<div class="buttons center">
+  <%= link_to_icon t('user.agenda_new'),
+      new_user_agenda_path(@cabinet),
+      class: "btn--primary", icon: "plus-circle" %>
+</div>
+
+<div id="agendas">
+  <table class="agendas-table">
+    <thead>
+      <tr>
+        <th><%= t('agenda.ths.name') %></th>
+        <th><%= t('agenda.ths.created_at') %></th>
+        <th colspan="3"></th>
+      </tr>
+    </thead>
+
+    <tbody>
+      <%= render @agendas %>
+    </tbody>
+  </table>
+</div>
+

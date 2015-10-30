@@ -1,4 +1,5 @@
 class CompaniesController < ApplicationController
+  authorize_resource
   def new
     @company = Company.new
     @company.users.new

@@ -14,7 +14,7 @@
     <fieldset>
       <legend><%= t('company.legends.company') %></legend>
       <%= f.input :name, autofocus: true %>
-      <%= f.input :number %>
+      <%= f.input :number, input_html: {data: {mask: "999 999 999 99999"}} %>
       <%= f.input :email %>
       <%= f.input :tel %>
       <%= f.input :cgv, label: t('simple_form.labels.company.cgv', link: link_to(t('cgv'), signup_path, target: "_blank")).html_safe %>

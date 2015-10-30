@@ -1,5 +1,11 @@
 <% content_for(:title, t('user.list_cabinets')) %>
 
+<div class="buttons center">
+  <%= link_to_icon t('user.cabinet_new'),
+      new_company_user_path(current_company, role: "cabinet"),
+      class: "btn--primary", icon: "plus-circle" %>
+</div>
+
 <div id="users">
   <table class="users-table">
     <thead>
@@ -16,11 +22,5 @@
       <%= render @users %>
     </tbody>
   </table>
-</div>
-
-<div class="buttons center">
-  <%= link_to_icon t('user.cabinet_new'),
-      new_company_user_path(current_company, role: "cabinet"),
-      class: "btn--primary", icon: "plus-circle" %>
 </div>
 

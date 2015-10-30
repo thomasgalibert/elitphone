@@ -137,8 +137,12 @@ form.simple_form{
   .form-title{
     text-align: center;
     color: $font-color;
-    font-size: 2em;
+    font-size: 1.7em;
     margin-bottom: 1em;
+  }
+  &.small{
+    width: 30%;
+    min-width: 400px;
   }
 }
 
@@ -176,7 +180,7 @@ form.signup-form{
     input[type="submit"]{
       width: 100%;
     }
-    &.login{
+    &.login, &.small{
       width: 90%;
     }
   }

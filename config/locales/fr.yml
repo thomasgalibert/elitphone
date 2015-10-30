@@ -273,8 +273,11 @@ fr:
 
   user:
     cabinet_new: "Ajouter un cabinet"
+    agenda_new: "Ajouter un agenda"
     cabinets_back: " Retour à la liste des cabinets"
+    agendas_back: " Retour à la liste des agendas"
     list_cabinets: "Liste des cabinets"
+    list_agendas: "Liste des agendas"
     legends:
       cabinet_perso: "Information utilisateur"
       cabinet_details: "Détails du cabinet"
@@ -285,6 +288,15 @@ fr:
       email: "Email"
       longname: "Nom du médecin"
       tel: "Téléphone"
+
+  agenda:
+    new: "Ajouter un agenda"
+    edit: "Modification de l'agenda"
+    ths:
+      name: "Description"
+      created_at: "Date enregistrement"
+    legends:
+      parameters: "Paramètres de l'agenda"
 
   helpers:
     submit:
@@ -297,3 +309,6 @@ fr:
       user:
         create: "Enregistrer les informations"
         update: "Mettre à jour les informations"
+      agenda:
+        create: "Enregistrer l'agenda"
+        update: "Mettre à jour l'agenda"

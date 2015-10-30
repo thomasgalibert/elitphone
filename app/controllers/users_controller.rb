@@ -1,4 +1,5 @@
 class UsersController < ApplicationController
+  authorize_resource
   before_action :set_user, only: [:edit, :update]
 
   def index
