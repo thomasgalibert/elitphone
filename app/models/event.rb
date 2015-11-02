@@ -5,6 +5,9 @@ class Event < ActiveRecord::Base
 
   before_save :save_end_at
 
+  # VALIDATIONS
+  belongs_to :patient
+
   # CALLBACKS TO UPDATE END AT Attribute according to duration
 
   def save_end_at

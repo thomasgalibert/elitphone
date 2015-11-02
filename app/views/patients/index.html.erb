@@ -1,0 +1,27 @@
+<% content_for(:title, t('patient.list')) %>
+
+<div class="buttons center">
+  <%= link_to_icon t('patient.new'),
+      new_company_patient_path(@company),
+      class: "btn--primary", icon: "plus-circle" %>
+</div>
+
+<div id="patients">
+  <table class="patients-table">
+    <thead>
+      <tr>
+        <th></th>
+        <th><%= t('patient.ths.name') %></th>
+        <th><%= t('patient.ths.firstname') %></th>
+        <th><%= t('patient.ths.email') %></th>
+        <th><%= t('patient.ths.tel') %></th>
+        <th colspan="3"></th>
+      </tr>
+    </thead>
+
+    <tbody>
+      <%= render @patients %>
+    </tbody>
+  </table>
+</div>
+

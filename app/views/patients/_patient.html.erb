@@ -1,0 +1,25 @@
+<tr id="patient-<%= patient.id %>">
+  <td><%= display_gender_patient(patient) %></td>
+  <td class="bold"><%= patient.name %></td>
+  <td><%= patient.firstname %></td>
+  <td><%= patient.email %></td>
+  <td><%= patient.tel %></td>
+
+  <!-- Actions Links -->
+  <td><%= link_to_stack_icon '',
+          company_patient_path(@company, patient),
+          icon: "search", class: "icon-action show" %>
+  </td>
+  <td><%= link_to_stack_icon '',
+          edit_company_patient_path(@company, patient),
+          icon: "pencil", class: "icon-action edit" %>
+  </td>
+  <td><%= link_to_stack_icon '',
+          company_patient_path(@company, patient),
+          method: :delete,
+          data: {confirm: t('form.confirm')},
+          icon: "times", class: "icon-action destroy" %>
+  </td>
+
+  <!-- End actions links -->
+</tr>

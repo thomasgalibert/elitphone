@@ -229,6 +229,7 @@ fr:
   cgv: "conditions générales de vente"
   prev_arrow: "<<"
   next_arrow: ">>"
+  years: "ans"
   buttons:
     ok: "OK"
     cancel: "ANNULER"
@@ -298,6 +299,20 @@ fr:
     legends:
       parameters: "Paramètres de l'agenda"
 
+  patient:
+    list: "Liste des patients"
+    new: "Ajouter un patient"
+    edit: "Modification du patient"
+    back: "Retour à la liste des patients"
+    ths:
+      name: "Nom"
+      firstname: "Prénom"
+      email: "Email"
+      tel: "Téléphone"
+    legends:
+      perso: "Informations personnelles"
+      admin: "Informations administratives"
+
   helpers:
     submit:
       event:
@@ -312,3 +327,6 @@ fr:
       agenda:
         create: "Enregistrer l'agenda"
         update: "Mettre à jour l'agenda"
+      patient:
+        create: "Enregistrer le patient"
+        update: "Mettre à jour le patient"

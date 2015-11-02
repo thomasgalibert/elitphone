@@ -48,6 +48,16 @@ fr:
         step: "Intervalle de l'agenda en minutes"
         start_hour: "Heure de début"
         end_hour: "Heure de fin"
+      patient:
+        gender: "Civilité"
+        name: "Nom"
+        firstname: "Prénom"
+        email: "Email"
+        tel: "Téléphone"
+        street: "Adresse"
+        zipcode: "Code postal"
+        town: "Ville"
+        birthday: "Date de naissance"
     placeholders:
       company:
         name: "SARL Callme"
@@ -78,6 +88,19 @@ fr:
         step: "15"
         start_hour: "8"
         end_hour: "18"
+      patient:
+        name: "DURAND"
+        firstname: "Louis"
+        email: "louis.durand@gmail.com"
+        tel: "06 98 67 56 56"
+        street: "45 impasse des oliviers"
+        zipcode: "11000"
+        town: "Narbonne"
+    prompts:
+      patient:
+        gender: "-- choisissez la civilité --"
+      event:
+        patient: "-- choississez un patient --"
     options:
       user:
         role:
@@ -85,6 +108,11 @@ fr:
           cabinet: "Cabinet médical"
           operator: "Opératrice"
           secretary: "Secrétaire"
+      patient:
+        gender:
+          lady: "Madame"
+          miss: "Mademoiselle"
+          mister: "Monsieur"
       cabinet_detail:
         specialty:
           addictologie: "Addictologie"

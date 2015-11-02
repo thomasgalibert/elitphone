@@ -1,0 +1,37 @@
+<%= simple_form_for [@company, @patient], html: {class: "signup-form"} do |f| %>
+
+  <%= render "/includes/errors", object: @patient %>
+
+  <div class="cols">
+
+    <fieldset>
+      <legend><%= t('patient.legends.perso') %></legend>
+      <div class="two-cols-fields">
+        <%= f.input :name, autofocus: true %>
+        <%= f.input :firstname %>
+      </div>
+      <%= f.input :gender, collection: [:lady, :miss, :mister], prompt: t('simple_form.prompts.patient.gender') %>
+      <%= f.input :birthday, start_year: Date.today.year - 100, end_year: Date.today.year %>
+    </fieldset>
+
+    <fieldset>
+      <legend><%= t('patient.legends.admin') %></legend>
+      <%= f.input :email %>
+      <%= f.input :tel, input_html: {data: {mask: '99 99 99 99 99'}} %>
+      <%= f.input :street %>
+      <div class="two-cols-fields">
+        <%= f.input :zipcode %>
+        <%= f.input :town %>
+      </div>
+    </fieldset>
+
+  </div>
+
+  <%= f.submit class: "btn--success" %>
+
+  <div class="additionals-links">
+    <%= link_to "&larr;".html_safe+t('patient.back'),
+        company_patients_path(current_company) %>
+  </div>
+
+<% end %>

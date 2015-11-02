@@ -7,6 +7,7 @@
   <ul class="nav-middle">
     <% if current_user %>
       <li><%= link_to t('menu.cabinets'), company_users_path(current_company, role: "cabinet") %></li>
+      <li><%= link_to t('menu.patients'), company_patients_path(current_company) %></li>
     <% end %>
     <li><%= render 'events/search_form' %></li>
   </ul>

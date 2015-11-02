@@ -72,7 +72,8 @@ class EventsController < ApplicationController
        :name,
        :start_at,
        :end_at,
-       :duration
+       :duration,
+       :patient_id
        )
     end
 end

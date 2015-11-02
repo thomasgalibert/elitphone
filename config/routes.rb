@@ -1,5 +1,7 @@
 Rails.application.routes.draw do
 
+  resources :patients
+
   resources :agendas
 
   resources :cabinet_details
@@ -13,6 +15,7 @@ Rails.application.routes.draw do
   resources :companies do
     resources :users
     resources :agendas
+    resources :patients
   end
 
   # EVENTS
@@ -29,5 +32,5 @@ Rails.application.routes.draw do
   match 'signup' => 'companies#new', via: :get
 
   # Root
-  root 'events#index'
+  root 'users#index'
 end

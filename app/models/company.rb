@@ -12,4 +12,5 @@ class Company < ActiveRecord::Base
     has_many :users, autosave: true
     accepts_nested_attributes_for :users
     has_many :agendas
+    has_many :patients
 end
