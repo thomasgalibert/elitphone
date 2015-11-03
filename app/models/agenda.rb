@@ -2,6 +2,7 @@ class Agenda < ActiveRecord::Base
   # RELATIONSHIPS
   belongs_to :company
   belongs_to :user
+  has_many :events
 
   # VALIDATIONS
   validates :name, :step, :start_hour, :end_hour, presence: true

@@ -269,6 +269,8 @@ fr:
 
   event:
     new: "Ajouter un rendez-vous"
+    edit: "Modifier le rendez-vous"
+    delete: "Supprimer le rendez-vous"
     prompts:
       duration: "-- sélectionner la durée --"
 

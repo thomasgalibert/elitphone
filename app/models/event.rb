@@ -1,12 +1,15 @@
 class Event < ActiveRecord::Base
-  validates :name, presence: true
+
+  # VALIDATIONS
+  validates :agenda_id, :patient_id, :start_at, :duration, presence: true
 
   attr_accessor :duration
 
   before_save :save_end_at
 
-  # VALIDATIONS
+  # RELATIONSHIPS
   belongs_to :patient
+  belongs_to :agenda
 
   # CALLBACKS TO UPDATE END AT Attribute according to duration
 

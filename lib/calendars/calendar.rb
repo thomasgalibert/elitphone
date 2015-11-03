@@ -84,7 +84,7 @@ class Calendar < Struct.new(:view, :date, :step, :events, :start_hour, :end_hour
       if event
         if event.start_at == horaire
           name << content_tag(:div,
-                              event.name,
+                              event.patient.longname,
                               class: "rdv active",
                               data: {id: event.id})
         elsif horaire > event.start_at && horaire < event.end_at

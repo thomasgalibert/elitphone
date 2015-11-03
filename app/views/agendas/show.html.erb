@@ -1,10 +1,5 @@
 <%= link_to t('user.agendas_back'), user_agendas_path(@cabinet), class: "btn--tiny--default" %>
 
-<div class="week">
-  <%= calendar @date_ref,
-      @agenda.step,
-      @events,
-      @agenda.start_hour,
-      @agenda.end_hour,
-      @agenda %>
-</div>
+<%= content_tag :div, class: 'week', data: {agenda: @agenda.id} do %>
+  <%= render partial: "agendas/week", locals: {date_ref: @date_ref, agenda: @agenda, events: @events} %>
+<% end %>

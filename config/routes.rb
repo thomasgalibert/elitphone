@@ -2,7 +2,9 @@ Rails.application.routes.draw do
 
   resources :patients
 
-  resources :agendas
+  resources :agendas do
+    resources :events
+  end
 
   resources :cabinet_details
 

@@ -1,7 +1,7 @@
 class AgendasController < ApplicationController
   authorize_resource
-  before_filter :set_cabinet, only: [:index, :new, :create, :show, :update, :edit]
-  before_filter :set_agenda, only: [:show, :edit, :update]
+  before_action :set_cabinet, only: [:index, :new, :create, :show, :update, :edit]
+  before_action :set_agenda, only: [:show, :edit, :update]
 
   def index
     load_agendas
@@ -21,6 +21,10 @@ class AgendasController < ApplicationController
     load_agendas_and_render_index
   end
 
+  def show
+    # Event.destroy_all
+  end
+
   private
 
     def set_cabinet
@@ -34,7 +38,7 @@ class AgendasController < ApplicationController
       @date_ref = init_date
       first_day = @date_ref.beginning_of_week
       last_day = @date_ref.end_of_week
-      @events = Event.where(start_at: first_day..last_day)
+      @events = @agenda.events.where(start_at: first_day..last_day)
     end
 
     def init_date

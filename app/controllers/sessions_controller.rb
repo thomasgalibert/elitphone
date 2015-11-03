@@ -9,7 +9,7 @@ class SessionsController < ApplicationController
     if user && user.authenticate(params[:password])
       session[:user_id] = user.id
       flash[:success] = "#{t('session.flash.login')} #{user.firstname} !!"
-      redirect_to events_path
+      redirect_to root_path
     else
       flash[:warning] = t('session.flash.error')
       redirect_to login_path

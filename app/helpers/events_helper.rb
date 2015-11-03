@@ -13,6 +13,14 @@ module EventsHelper
     return options
   end
 
+  def selected_duration(event)
+    unless event.new_record?
+      ((event.end_at - event.start_at)/60).to_i
+    else
+      ""
+    end
+  end
+
   private
 
     def display_time_format(minutes)

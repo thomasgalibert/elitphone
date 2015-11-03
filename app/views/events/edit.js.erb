@@ -1,0 +1,6 @@
+$("html, body").animate({ scrollTop: 0 }, "slow");
+$(".title-canvas").html("<%= t('event.edit') %>");
+$(".content-canvas").html("<%= j render('events/form') %>");
+$("#offcanvas").addClass('target');
+removeClick();
+

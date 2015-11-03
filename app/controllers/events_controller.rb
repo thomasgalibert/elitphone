@@ -1,32 +1,28 @@
 class EventsController < ApplicationController
   autocomplete :event, :name, full: true
   authorize_resource
+  before_action :set_agenda, only: [:new, :create, :edit, :update]
   before_action :set_event, only: [:show, :edit, :update, :destroy]
 
-  def index
-    load_date_and_events(params[:set_date])
-    @event = Event.new
-  end
 
   def new
-    @event = Event.new
-    @date_ref = init_date(params[:set_date])
+    @event = @agenda.events.new
   end
 
   def create
-    @event = Event.create!(event_params)
-    load_date_from_event(@event)
+    @event = @agenda.events.create!(event_params)
 
     # Send and email
     UserMailer.welcome.deliver_later
 
     # Broadcast the event and render calendar view
     ActionCable.server.broadcast 'events',
-      event: EventsController.render(
-        partial: 'events/week',
+      event: AgendasController.render(
+        partial: 'agendas/week',
         locals: {
           date_ref: @date_ref,
-          events: @events
+          events: @events,
+          agenda: @agenda
         }
       )
 
@@ -34,7 +30,20 @@ class EventsController < ApplicationController
   end
 
   def update
+    @event.update!(event_params)
 
+    # Broadcast the event and render calendar view
+    ActionCable.server.broadcast 'events',
+      event: AgendasController.render(
+        partial: 'agendas/week',
+        locals: {
+          date_ref: @date_ref,
+          events: @events,
+          agenda: @agenda
+        }
+      )
+
+    head :ok
   end
 
   def destroy
@@ -42,28 +51,24 @@ class EventsController < ApplicationController
   end
 
   private
+
+    def set_agenda
+      @agenda = current_company.agendas.find(params[:agenda_id])
+
+      # variables for calendar view
+      @date_ref = init_date
+      first_day = @date_ref.beginning_of_week
+      last_day = @date_ref.end_of_week
+      @events = @agenda.events.where(start_at: first_day..last_day)
+    end
+
     # Use callbacks to share common setup or constraints between actions.
     def set_event
       @event = Event.find(params[:id])
     end
 
-    # Set the references dates for the calendar
-    def load_date_and_events(date)
-      @date_ref = init_date(date)
-      first_day = @date_ref.beginning_of_week
-      last_day = @date_ref.end_of_week
-      @events = Event.where(start_at: first_day..last_day)
-    end
-
-    def load_date_from_event(event)
-      @date_ref = event.start_at.to_datetime
-      first_day = @date_ref.beginning_of_week
-      last_day = @date_ref.end_of_week
-      @events = Event.where(start_at: first_day..last_day)
-    end
-
-    def init_date(date)
-      date_ref = date ? DateTime.parse(date) : Time.zone.now.to_datetime
+    def init_date
+      date_ref = params[:set_date] ? DateTime.parse(params[:set_date]) : Time.zone.now.to_datetime
     end
 
     # Never trust parameters from the scary internet, only allow the white list through.
@@ -73,7 +78,8 @@ class EventsController < ApplicationController
        :start_at,
        :end_at,
        :duration,
-       :patient_id
+       :patient_id,
+       :agenda_id
        )
     end
 end

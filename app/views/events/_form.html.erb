@@ -1,5 +1,22 @@
-<%= simple_form_for @event, remote: true do |f| %>
+<%= simple_form_for [@agenda, @event], remote: true do |f| %>
   <%= f.association :patient, label_method: :longname, prompt: t('simple_form.prompts.event.patient') %>
-  <%= f.input :duration, collection: select_durations(15), include_blank: false %>
+
+  <%= f.input :duration,
+      collection: select_durations(@agenda.step),
+      include_blank: false,
+      selected: selected_duration(@event) %>
+
+  <% if @event.new_record? %>
+    <%= f.input :start_at, as: :hidden, input_html: {value: @date_ref} %>
+  <% else %>
+    <%= f.input :start_at %>
+  <% end %>
+
   <%= f.button :submit %>
+
+  <% unless @event.new_record? %>
+    <p><%= button_to t('event.delete'), '#', class: "btn--alert" %></p>
+  <% end %>
 <% end %>
+
+
