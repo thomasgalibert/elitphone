@@ -17,7 +17,23 @@ module EventsHelper
     unless event.new_record?
       ((event.end_at - event.start_at)/60).to_i
     else
-      ""
+      event.agenda.step
+    end
+  end
+
+  def build_datalist(options = {})
+    id = options[:id]
+    agenda = options[:agenda]
+    number_options = 60/agenda.step*3
+    options = ""
+    (number_options+1).times do |i|
+      unless i == 0
+        minutes = i*agenda.step
+        options << content_tag(:option, display_time_format(minutes), value: minutes)
+      end
+    end
+    content_tag :datalist, id: id do
+      options.html_safe
     end
   end
 

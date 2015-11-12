@@ -1,0 +1,31 @@
+.slider{
+  width: 100%;
+  @include flexbox();
+  @include flexdirection(row);
+  @include justify-content(space-around);
+  margin-bottom: 1em;
+  position: relative;
+  .tick{
+    @include circle(35px, $success);
+    @include cursor();
+    text-align: center;
+    z-index: 2;
+    .tick-value{
+      color: $white;
+      font-size: 0.9em;
+      padding-top: 7px;
+    }
+    &.active-tick{
+      @include circle(35px, $warning);
+    }
+  }
+  .line{
+    position: absolute;
+    top: 17px;
+    left: 0;
+    height: 2px;
+    background: darken($success, 20%);
+    width: 100%;
+    z-index: 1;
+  }
+}

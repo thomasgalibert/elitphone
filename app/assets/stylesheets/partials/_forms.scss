@@ -53,6 +53,10 @@ form{
     margin-bottom: 1.5em;
   }
 
+  input[type="range"]{
+     width: 100%;
+  }
+
   textarea#page_content{
     border: 1px solid $bottom-input;
     height: 800px;

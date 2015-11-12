@@ -1,4 +1,5 @@
 class AgendasController < ApplicationController
+  autocomplete :agenda, :name_cabinet, full: true, extra_data: [:name, :user_id], display_value: :display_results
   authorize_resource
   before_action :set_cabinet, only: [:index, :new, :create, :show, :update, :edit]
   before_action :set_agenda, only: [:show, :edit, :update]
@@ -62,7 +63,8 @@ class AgendasController < ApplicationController
         :end_hour,
         :archived,
         :company_id,
-        :user_id
+        :user_id,
+        :name_cabinet
       )
     end
 end

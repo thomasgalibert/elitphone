@@ -2,9 +2,14 @@
   <%= f.association :patient, label_method: :longname, prompt: t('simple_form.prompts.event.patient') %>
 
   <%= f.input :duration,
-      collection: select_durations(@agenda.step),
-      include_blank: false,
-      selected: selected_duration(@event) %>
+      as: :range,
+      input_html: {step: @agenda.step,
+                   min: @agenda.step,
+                   max: @agenda.step*6,
+                   list: "durations",
+                   value: selected_duration(@event)} %>
+
+  <%= build_datalist(id: "durations", agenda: @agenda) %>
 
   <% if @event.new_record? %>
     <%= f.input :start_at, as: :hidden, input_html: {value: @date_ref} %>

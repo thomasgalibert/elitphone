@@ -4,6 +4,7 @@ Rails.application.routes.draw do
 
   resources :agendas do
     resources :events
+    get :autocomplete_agenda_name_cabinet, on: :collection
   end
 
   resources :cabinet_details
