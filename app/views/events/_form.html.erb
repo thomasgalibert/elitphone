@@ -1,21 +1,15 @@
 <%= simple_form_for [@agenda, @event], remote: true do |f| %>
   <%= f.association :patient, label_method: :longname, prompt: t('simple_form.prompts.event.patient') %>
 
-  <%= f.input :duration,
-      as: :range,
-      input_html: {step: @agenda.step,
-                   min: @agenda.step,
-                   max: @agenda.step*6,
-                   list: "durations",
-                   value: selected_duration(@event)} %>
-
-  <%= build_datalist(id: "durations", agenda: @agenda) %>
-
   <% if @event.new_record? %>
-    <%= f.input :start_at, as: :hidden, input_html: {value: @date_ref} %>
+    <%= f.input :start_at, default: @date_ref %>
+    <%= f.input :end_at, default: @date_ref+@agenda.step.minutes %>
   <% else %>
     <%= f.input :start_at %>
+    <%= f.input :end_at %>
   <% end %>
+
+  <%= hidden_field_tag :set_date, @date_ref %>
 
   <%= f.button :submit %>
 

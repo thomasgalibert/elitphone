@@ -78,6 +78,9 @@
         &.active{
           background: $color-active-rdv;
         }
+        &.half{
+          @include two-color-background(#FFF, $color-active-rdv);
+        }
         .timestamp{
           position: absolute;
           top: -6px;

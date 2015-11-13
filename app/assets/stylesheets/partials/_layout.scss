@@ -41,8 +41,13 @@ html, body{
       }
     }
 
+    .inside-offcanvas{
+      padding: 0.5em;
+      font-size: 0.7em;
+    }
+
     &.target{
-      width: 30%;
+      width: 400px;
       h2.title-canvas{
         padding: 0.5em;
       }

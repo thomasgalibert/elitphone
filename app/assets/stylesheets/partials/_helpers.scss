@@ -69,6 +69,15 @@
     filter:            progid:DXImageTransform.Microsoft.gradient(startColorStr='#{$startColor}', endColorStr='#{$endColor}');
 }
 
+// BACKGROUND GRADIENT
+@mixin two-color-background($startColor: #3C3C3C, $endColor: #999999) {
+    background: linear-gradient(to bottom, $startColor 0%,$startColor 50%,#000000 50%,$endColor 50%,$endColor 100%); /* W3C */
+    background: -webkit-linear-gradient(to bottom, $startColor 0%,$startColor 50%,#000000 50%,$endColor 50%,$endColor 100%); /* W3C */
+    background: -moz-linear-gradient(to bottom, $startColor 0%,$startColor 50%,#000000 50%,$endColor 50%,$endColor 100%); /* W3C */
+    background: -ms-linear-gradient(to bottom, $startColor 0%,$startColor 50%,#000000 50%,$endColor 50%,$endColor 100%); /* W3C */
+    background: -o-linear-gradient(to bottom, $startColor 0%,$startColor 50%,#000000 50%,$endColor 50%,$endColor 100%); /* W3C */
+}
+
 // BACKGROUND HORIZONTAL
 @mixin background-horizontal($startColor: #3C3C3C, $endColor: #999999) {
     background-color: $startColor;

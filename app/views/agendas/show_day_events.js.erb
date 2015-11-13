@@ -1,0 +1,5 @@
+$("html, body").animate({ scrollTop: 0 }, "slow");
+$(".title-canvas").html("<%= t('event.day') %>");
+$(".content-canvas").html("<%= j render('agendas/events_day') %>");
+$("#offcanvas").addClass('target');
+removeClick();

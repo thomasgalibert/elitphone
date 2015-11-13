@@ -1,0 +1,9 @@
+<div class="inside-offcanvas">
+  <h3><%= l @day, format: :short %></h3>
+
+  <% for event in @events %>
+    <p><%= link_to display_gap(event), edit_agenda_event_path(@agenda, event), remote: true %></p>
+  <% end %>
+</div>
+
+

@@ -271,6 +271,7 @@ fr:
     new: "Ajouter un rendez-vous"
     edit: "Modifier le rendez-vous"
     delete: "Supprimer le rendez-vous"
+    day: "Détail des rendez-vous"
     prompts:
       duration: "-- sélectionner la durée --"
 

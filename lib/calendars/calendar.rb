@@ -78,23 +78,40 @@ class Calendar < Struct.new(:view, :date, :step, :events, :start_hour, :end_hour
       return hours.html_safe
     end
 
-    def find_name_event(minutes, day, event, start_hour)
+    def find_name_event(minutes, day, events, start_hour)
       horaire = calculate_horaire(minutes, day, start_hour)
+      end_time = calculate_horaire(minutes+step, day, start_hour)
       name = ""
-      if event
-        if event.start_at == horaire
-          name << content_tag(:div,
-                              event.patient.longname,
-                              class: "rdv active",
-                              data: {id: event.id})
-        elsif horaire > event.start_at && horaire < event.end_at
-          name << content_tag(:div, "", class: "rdv active")
-        else
-          name << content_tag(:div, "", class: "rdv")
+
+      # Take the events of the cell and display in a different div according to their number
+      if events.count > 0 && events.count < 2
+        for event in events
+          if event.start_at == horaire
+            name << content_tag(:div,
+                                event.patient.longname,
+                                class: "rdv active",
+                                data: {id: event.id})
+          elsif horaire > event.start_at && horaire < event.end_at
+            if event.end_at < end_time
+              name << content_tag(:div, "... #{event.patient.longname} (#{l(event.start_at, format: :time)})", class: "rdv active")
+            else
+              name << content_tag(:div, "... #{event.patient.longname}", class: "rdv active")
+            end
+          elsif horaire < event.start_at
+            name << content_tag(:div,
+                                "#{l(event.start_at, format: :time)} #{event.patient.longname}",
+                                class: "rdv active",
+                                data: {id: event.id})
+          else
+            name << content_tag(:div, "", class: "rdv")
+          end
         end
+      elsif events.count > 1
+          name << content_tag(:div, link_to("!! #{events.count} rdvs", view.show_day_events_agenda_path(agenda, day: day, user_id: agenda.user.id), remote: true), class: "rdv active")
       else
         name << content_tag(:div, "", class: "rdv")
       end
+
       return name.html_safe
     end
 
@@ -141,18 +158,28 @@ class Calendar < Struct.new(:view, :date, :step, :events, :start_hour, :end_hour
 
     def calculate_divs(step, start_hour, end_hour)
       gap = end_hour - start_hour
-      number_div = 60/step*gap
+      number_div = (60/step.to_f*gap.to_f).ceil
     end
 
     def select_events_in_day(day, events, minutes, start_hour)
       events_of_day = []
+      start_cell = calculate_horaire(minutes, day, start_hour)
+      end_cell = calculate_horaire(minutes+step, day, start_hour)
+
       events.each do |event|
-        if (event.start_at <= calculate_horaire(minutes, day, start_hour) &&
-            event.end_at >= calculate_horaire(minutes, day, start_hour))
-          events_of_day << event
+        if event.start_at <= start_cell
+          if event.end_at >= end_cell
+            events_of_day << event
+          elsif event.end_at < end_cell && event.end_at > start_cell
+            events_of_day << event
+          end
+        else
+          if event.start_at < end_cell
+            events_of_day << event
+          end
         end
       end
-      return events_of_day[0]
+      return events_of_day
     end
 
     ############################################################################
