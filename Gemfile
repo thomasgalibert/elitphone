@@ -43,6 +43,12 @@ gem 'cancancan', '~> 1.10'
 # Use Unicorn as the app server
 # gem 'unicorn'
 
+# GEMS for SMS
+# Use Twilio to send confirmation message
+gem 'twilio-ruby'
+# Use sanitize
+gem 'sanitize'
+
 # Use Capistrano for deployment
 # gem 'capistrano-rails', group: :development
 
