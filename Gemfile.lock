@@ -171,6 +171,7 @@ GEM
       railties (>= 3.2, < 5.0)
     globalid (0.3.6)
       activesupport (>= 4.1.0)
+    gravtastic (3.2.6)
     hiredis (0.5.2)
     hitimes (1.2.3)
     holidays (2.2.0)
@@ -249,6 +250,7 @@ DEPENDENCIES
   cancancan (~> 1.10)
   coffee-rails!
   font-awesome-rails
+  gravtastic
   holidays
   jbuilder (~> 2.0)
   jquery-rails

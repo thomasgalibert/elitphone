@@ -296,6 +296,7 @@ fr:
   agenda:
     new: "Ajouter un agenda"
     edit: "Modification de l'agenda"
+    title: "Agenda"
     ths:
       name: "Description"
       created_at: "Date enregistrement"

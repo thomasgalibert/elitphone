@@ -16,6 +16,7 @@ gem 'puma'
 gem 'uglifier', '>= 1.3.0'
 # Use CoffeeScript for .coffee assets and views
 gem 'coffee-rails', github: "rails/coffee-rails"
+gem 'gravtastic'
 
 
 # See https://github.com/rails/execjs#readme for more supported runtimes

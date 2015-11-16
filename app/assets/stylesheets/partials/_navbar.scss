@@ -44,12 +44,19 @@ nav.topbar{
             border-bottom: none;
           }
         }
+        &.gravatar{
+          img{
+            @include circle(50px, #FFF);
+            border: 1px solid #333;
+          }
+
+        }
       }
       form{
         margin: 0;
         display: inline-block;
         padding: 1em 0.5em;
-        input.ui-autocomplete-input, input[name="event_name"]{
+        input.ui-autocomplete-input, input[name="agenda_name"]{
           width: 300px;
           margin: 0;
           padding: 0.3em 0.5em;
@@ -75,5 +82,30 @@ nav.topbar{
         font-size: 0.8em;
       }
     }
+  }
+}
+
+// NAVBAR FOR CALENDAR
+
+.nav-calendar{
+  @include flexbox();
+  @include flexdirection(row);
+  @include justify-content(center);
+  border-bottom: 1px solid darken($secondary, 30%);
+  .nav-calendar-left, .nav-calendar-middle, .nav-calendar-right{
+    @include flexbox();
+    padding: 0 0 1em 0;
+    margin: 0;
+  }
+  .nav-calendar-left{
+    width: 25%;
+  }
+  .nav-calendar-middle{
+    width: 50%;
+    @include justify-content(center);
+  }
+  .nav-calendar-right{
+    width: 25%;
+    @include justify-content(flex-end);
   }
 }
