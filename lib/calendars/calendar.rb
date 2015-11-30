@@ -1,6 +1,7 @@
-class Calendar < Struct.new(:view, :date, :step, :events, :start_hour, :end_hour, :agenda)
+class Calendar < Struct.new(:view, :date, :step, :events, :start_hour, :end_hour, :agenda, :view_style)
 
   delegate :content_tag, :l, :t, :fa_icon, :link_to, to: :view
+
 ##############################################################################
 # Build a week calendar view according to these parameters                   #
 # 1 - a date                                                                 #
@@ -11,8 +12,13 @@ class Calendar < Struct.new(:view, :date, :step, :events, :start_hour, :end_hour
 
   def build_weeks
     # 1 - find the first and the last day of the week
-    first_day = date.beginning_of_week
-    last_day = date.end_of_week
+    if view_style == "day"
+      first_day = date.beginning_of_day
+      last_day = date.end_of_day
+    else
+      first_day = date.beginning_of_week
+      last_day = date.end_of_week
+    end
 
     # 2 - build the column of the timestamps
     cols = ""
@@ -86,32 +92,50 @@ class Calendar < Struct.new(:view, :date, :step, :events, :start_hour, :end_hour
       # Take the events of the cell and display in a different div according to their number
       if events.count > 0 && events.count < 2
         for event in events
+          # 1 - start hour event is the same as the div
           if event.start_at == horaire
             name << content_tag(:div,
                                 event.patient.longname,
                                 class: "rdv active",
                                 data: {id: event.id})
+          # 2- If the event continue to the cells
           elsif horaire > event.start_at && horaire < event.end_at
+            # a) ... it ends INSIDE the cell
             if event.end_at < end_time
-              name << content_tag(:div, "... #{event.patient.longname} (#{l(event.start_at, format: :time)})", class: "rdv active")
+              name << content_tag(:div,
+              "... #{event.patient.longname} (#{l(event.start_at, format: :time)})",
+              class: "rdv active")
+            # b) ... it takes all the cell
             else
-              name << content_tag(:div, "... #{event.patient.longname}", class: "rdv active")
+              name << content_tag(:div,
+              "... #{event.patient.longname}",
+              class: "rdv active")
             end
+          # 3 - The event begins INSIDE the cell
           elsif horaire < event.start_at
             name << content_tag(:div,
-                                "#{l(event.start_at, format: :time)} #{event.patient.longname}",
-                                class: "rdv active",
-                                data: {id: event.id})
+                    "#{l(event.start_at, format: :time)} #{event.patient.longname}",
+                    class: "rdv active",
+                    data: {id: event.id})
+          # 4 - in the others cases, just put a class rdv
           else
             name << content_tag(:div, "", class: "rdv")
           end
         end
+      # if multiples events on the same time, puts the numbers and a link to
+      # open the offcanvas with the details events
       elsif events.count > 1
-          name << content_tag(:div, link_to("!! #{events.count} rdvs", view.show_day_events_agenda_path(agenda, day: day, user_id: agenda.user.id), remote: true), class: "rdv active")
+          name << content_tag(:div,
+            link_to("!! #{events.count} rdvs",
+                view.show_day_events_agenda_path(agenda,
+                  day: day,
+                  user_id: agenda.user.id),
+                remote: true),
+                class: "rdv active")
       else
         name << content_tag(:div, "", class: "rdv")
       end
-
+      ## => return finally the html generated for the cell
       return name.html_safe
     end
 
@@ -131,19 +155,19 @@ class Calendar < Struct.new(:view, :date, :step, :events, :start_hour, :end_hour
       if day.monday?
         links << link_to(t('prev_arrow'), view.user_agenda_path(cabinet, agenda, set_date: day-1))
         links << "&nbsp;"
-        links << l(day, format: :calendar)
+        links << display_day_link(day)
         links << "&nbsp;" if day.holiday?(:fr)
         links << fa_icon("gift") if day.holiday?(:fr)
       elsif day.sunday?
         links << fa_icon("gift") if day.holiday?(:fr)
         links << "&nbsp;" if day.holiday?(:fr)
-        links << l(day, format: :calendar)
+        links << display_day_link(day)
         links << "&nbsp;"
         links << link_to(t('next_arrow'), view.user_agenda_path(cabinet, agenda, set_date: day+1))
       else
         links << fa_icon("gift") if day.holiday?(:fr)
         links << "&nbsp;" if day.holiday?(:fr)
-        links << l(day, format: :calendar)
+        links << display_day_link(day)
       end
       return links.html_safe
     end
@@ -210,5 +234,9 @@ class Calendar < Struct.new(:view, :date, :step, :events, :start_hour, :end_hour
       else
         "day-number holiday"
       end
+    end
+
+    def display_day_link(day)
+      link_to l(day, format: :calendar), view.show_day_user_agenda_url(agenda.user, agenda, day: day)
     end
 end

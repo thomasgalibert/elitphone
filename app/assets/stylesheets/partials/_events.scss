@@ -37,6 +37,7 @@
     }
     &.hour-row{
       width: 25%;
+      max-width: 75px;
     }
     .step{
       border-bottom: 1px dashed $color-row-dashed;

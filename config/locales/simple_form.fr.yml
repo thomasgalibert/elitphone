@@ -36,6 +36,7 @@ fr:
         start_at: "Début"
         end_at: "Fin"
         duration: "Durée"
+        is_recurring: "Evénement récurrent ?"
       cabinet_detail:
         name: "Nom du cabinet"
         street: "Adresse"

@@ -1,8 +1,8 @@
 module PatientsHelper
   def display_gender_patient(patient)
     case patient.gender
-      when "lady"then display_icon_and_age("venus", patient.birthday, "pink")
-      when "miss" then display_icon_and_age("venus", patient.birthday, "pink")
+      when "lady"   then display_icon_and_age("venus", patient.birthday, "pink")
+      when "miss"   then display_icon_and_age("venus", patient.birthday, "pink")
       when "mister" then display_icon_and_age("mars", patient.birthday, "blue")
       else fa_icon("mars")
     end

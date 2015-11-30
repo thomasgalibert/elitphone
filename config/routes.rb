@@ -6,13 +6,16 @@ Rails.application.routes.draw do
     resources :events
     get :autocomplete_agenda_name_cabinet, on: :collection
     get :show_day_events, on: :member
+    get :show_day, on: :member
   end
 
   resources :cabinet_details
 
   # USERS
   resources :users do
-    resources :agendas
+    resources :agendas do
+      get :show_day, on: :member
+    end
   end
 
   # COMPANIES
@@ -26,6 +29,8 @@ Rails.application.routes.draw do
   resources :events do
     get :autocomplete_event_name, :on => :collection
   end
+
+  post "events/incoming", to: 'events#accept_or_reject', as: 'incoming'
 
   match 'welcome' => 'welcome#index', via: :get
 

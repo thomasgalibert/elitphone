@@ -1,4 +1,4 @@
-<%= simple_form_for [@agenda, @event], remote: true do |f| %>
+<%= simple_form_for [@agenda, @event] do |f| %>
   <%= f.association :patient, label_method: :longname, prompt: t('simple_form.prompts.event.patient') %>
 
   <% if @event.new_record? %>
@@ -11,11 +11,19 @@
 
   <%= hidden_field_tag :set_date, @date_ref %>
 
+  <% if request.referrer =~ /show_day/ %>
+    <%= hidden_field_tag :view_action, "day" %>
+  <% else %>
+    <%= hidden_field_tag :view_action, "week" %>
+  <% end %>
+
   <%= f.button :submit %>
 
   <% unless @event.new_record? %>
     <p><%= button_to t('event.delete'), '#', class: "btn--alert" %></p>
   <% end %>
 <% end %>
+
+
 
 

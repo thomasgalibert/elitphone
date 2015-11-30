@@ -48,6 +48,7 @@ gem 'cancancan', '~> 1.10'
 gem 'twilio-ruby'
 # Use sanitize
 gem 'sanitize'
+gem 'ice_cube'
 
 # Use Capistrano for deployment
 # gem 'capistrano-rails', group: :development

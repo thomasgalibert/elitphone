@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20151112153052) do
+ActiveRecord::Schema.define(version: 20151123134635) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -55,10 +55,13 @@ ActiveRecord::Schema.define(version: 20151112153052) do
     t.string   "name"
     t.datetime "start_at"
     t.datetime "end_at"
-    t.datetime "created_at", null: false
-    t.datetime "updated_at", null: false
+    t.datetime "created_at",       null: false
+    t.datetime "updated_at",       null: false
     t.integer  "patient_id"
     t.integer  "agenda_id"
+    t.string   "status"
+    t.string   "recurring_status"
+    t.boolean  "is_recurring"
   end
 
   create_table "patients", force: :cascade do |t|

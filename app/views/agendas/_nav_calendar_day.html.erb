@@ -1,0 +1,19 @@
+<div class="nav-calendar">
+  <div class="nav-calendar-left">
+    <%= link_to_icon t('user.agendas_week_back'),
+        user_agenda_path(@agenda.user, @agenda, set_date: @day),
+        class: "btn--tiny--default", icon: "arrow-circle-left" %>
+  </div>
+
+  <div class="nav-calendar-middle">
+    <%= link_to_icon @agenda.display_results,
+        '#',
+        class: "btn--tiny--primary", icon: "calendar-o" %>
+  </div>
+
+  <div class="nav-calendar-right">
+    <%= link_to_icon t('event.new'),
+        new_agenda_event_path(@agenda),
+        class: "btn--tiny--success", icon: "plus-circle", remote: true %>
+  </div>
+</div>

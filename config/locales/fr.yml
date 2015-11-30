@@ -280,6 +280,7 @@ fr:
     agenda_new: "Ajouter un agenda"
     cabinets_back: " Retour à la liste des cabinets"
     agendas_back: " Retour à la liste des agendas"
+    agendas_week_back: "Retour vue semaine"
     list_cabinets: "Liste des cabinets"
     list_agendas: "Liste des agendas"
     legends:

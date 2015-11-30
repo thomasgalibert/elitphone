@@ -1,0 +1,14 @@
+.recurrent-dialog{
+  background: #fff;
+  padding: 0.5em;
+  margin-bottom: 1em;
+  .every{
+    display: inline;
+    padding-left: 1em;
+    input.inline-input{
+      width: 50px;
+      display: inline;
+      text-align: right;
+    }
+  }
+}
