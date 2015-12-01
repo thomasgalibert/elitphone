@@ -5,7 +5,8 @@
   <!-- Actions Links -->
   <td><%= link_to_stack_icon '',
           user_agenda_path(@cabinet, agenda),
-          icon: "search", class: "icon-action show" %>
+          icon: "search", class: "icon-action show",
+          "data-no-turbolink" => true %>
   </td>
   <td><%= link_to_stack_icon '',
           edit_user_agenda_path(@cabinet, agenda),

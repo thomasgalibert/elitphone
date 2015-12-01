@@ -1,8 +1,4 @@
-<% content_for(:title, l(@date_ref, format: :calendar)) %>
-
-<%= render 'nav_calendar_day' %>
-
-<%= content_tag :div, class: 'week', data: {agenda: @agenda.id} do %>
+<%= content_tag :div, class: 'week-wrapper', data: {agenda: @agenda.id} do %>
   <%= render partial: "agendas/week", locals: {date_ref: @date_ref, agenda: @agenda, events: @events, view_action: "day"} %>
 <% end %>
 

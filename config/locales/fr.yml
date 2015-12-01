@@ -274,6 +274,10 @@ fr:
     day: "Détail des rendez-vous"
     prompts:
       duration: "-- sélectionner la durée --"
+    flash:
+      create: "Rendez-vous pris avec succès"
+      update: "Rendez-vous modifié avec succès"
+      destroy: "Rendez-vous supprimé avec succès"
 
   user:
     cabinet_new: "Ajouter un cabinet"

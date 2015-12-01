@@ -1,5 +1,3 @@
-<%= render 'nav_calendar' %>
-
-<%= content_tag :div, class: 'week', data: {agenda: @agenda.id} do %>
+<%= content_tag :div, class: 'week-wrapper', data: {agenda: @agenda.id, channel: "events", user: current_user.id} do %>
   <%= render partial: "agendas/week", locals: {date_ref: @date_ref, agenda: @agenda, events: @events, view_action: "week"} %>
 <% end %>

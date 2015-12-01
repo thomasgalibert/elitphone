@@ -20,9 +20,12 @@
   <%= f.button :submit %>
 
   <% unless @event.new_record? %>
-    <p><%= button_to t('event.delete'), '#', class: "btn--alert" %></p>
+    <p><%= link_to t('event.delete'), agenda_event_path(@agenda, @event), method: :delete, class: "btn--alert" %></p>
   <% end %>
+
 <% end %>
+
+
 
 
 

@@ -237,6 +237,6 @@ class Calendar < Struct.new(:view, :date, :step, :events, :start_hour, :end_hour
     end
 
     def display_day_link(day)
-      link_to l(day, format: :calendar), view.show_day_user_agenda_url(agenda.user, agenda, day: day)
+      link_to l(day, format: :calendar), view.show_day_user_agenda_url(agenda.user, agenda, day: day, "data-no-turbolink" => true)
     end
 end

@@ -1,9 +1,8 @@
 class EventsController < ApplicationController
   autocomplete :event, :name, full: true
   authorize_resource
-  before_action :set_agenda, only: [:new, :edit, :create, :update, :show]
+  before_action :set_agenda, only: [:new, :edit, :create, :update, :show, :destroy]
   before_action :set_event, only: [:show, :edit, :update, :destroy]
-
 
   def new
     @event = @agenda.events.new
@@ -20,21 +19,24 @@ class EventsController < ApplicationController
     # Send and email to advert user that an event is scheduled
     UserMailer.welcome.deliver_later
     # Redirect to day or week view
-    redirect_to_agenda_view(params[:view_action], @agenda, @event)
+    redirect_to_agenda_view(params[:view_action], @agenda, @event, "create")
   end
 
   def update
     @event.update!(event_params)
     find_date_and_events(@event)
     # Redirect to day or week view
-    redirect_to_agenda_view(params[:view_action], @agenda, @event)
+    redirect_to_agenda_view(params[:view_action], @agenda, @event, "update")
   end
 
   def destroy
     @event.destroy
+    find_date_and_events(@event)
+    # Redirect to day or week view
+    redirect_to_agenda_view("destroy", @agenda, @event, "destroy")
   end
 
-  #webhook for twilio incoming message from host
+  # Webhook for twilio incoming message from host
   def accept_or_reject
     incoming = Sanitize.clean(params[:From]).gsub(/^\+\d/, '')
     sms_input = params[:Body].downcase
@@ -70,12 +72,19 @@ class EventsController < ApplicationController
       date_ref = params[:set_date] ? DateTime.parse(params[:set_date]) : Time.zone.now.to_datetime
     end
 
-    def redirect_to_agenda_view(view_action, agenda, event)
+    def redirect_to_agenda_view(view_action, agenda, event, flash_action)
       if view_action == "day"
+        flash[:success] = t("event.flash.#{flash_action}")
         redirect_to show_day_agenda_path(agenda,
                     day: event.start_at,
                     user_id: agenda.user.id)
       elsif view_action == "week"
+        flash[:success] = t("event.flash.#{flash_action}")
+        redirect_to user_agenda_path(agenda.user,
+                    agenda,
+                    set_date: event.start_at)
+      elsif view_action == "destroy"
+        flash[:success] = t("event.flash.#{flash_action}")
         redirect_to user_agenda_path(agenda.user,
                     agenda,
                     set_date: event.start_at)

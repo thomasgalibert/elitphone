@@ -1,7 +1,7 @@
 @openNewEvent = ->
   $('.step').click ->
     date = $(this).data('date')
-    agenda = $('.week').data('agenda')
+    agenda = $('.week-wrapper').data('agenda')
 
     $('.selected').removeClass('selected')
 
