@@ -1,3 +1,48 @@
-<p><%= @event.patient.longname %></p>
-<p><%= l @event.start_at %> - <%= l @event.end_at %></p>
-<p>Fréquence : <%= @event.recurring_status %></p>
+<% content_for :title, @event.patient.longname %>
+
+<div class="center">
+  <%= build_calendar_gap(from: @event.start_at, to: @event.end_at) %>
+</div>
+
+<div class="event-wrapper cols">
+  <div class="event-details">
+    <p>
+      <%= @event.patient.longname %>
+      <%= display_gender_patient(@event.patient) %>
+    </p>
+    <p>
+      <%= fa_stacked_icon "at inverse", base: "circle" %>
+      <%= @event.patient.email %>
+    </p>
+    <p>
+      <%= fa_stacked_icon "phone inverse", base: "circle" %>
+      <%= link_to @event.patient.tel, "tel:#{@event.patient.international_number}" %>
+    </p>
+    <p>
+      <%= fa_stacked_icon "home inverse", base: "circle" %>
+      <%= @event.patient.street %>
+    </p>
+    <p>
+      <%= fa_stacked_icon "bank inverse", base: "circle" %>
+      <%= @event.patient.ziptown %>
+    </p>
+
+    <hr class="style-two">
+    <p>Nombre de rdvs pris : <%= @event.patient.events.count %></p>
+  </div>
+  <div class="patient-details">
+    <p><strong>Paramètres du rendez-vous</strong></p>
+    <p>Statut du RDV : <%= best_in_place @event, :status, as: :select, collection: Event::STATUTS, url: agenda_event_path(@agenda, @event) %></p>
+
+    <p>Signaler un abus : (prévoir îcones)</p>
+    <p>Attacher un fichier : (formulaire upload)</p>
+    <p>Ecrire un commentaire : <br> <span class="small-comment"><%= best_in_place @event, :comments, as: :textarea, url: agenda_event_path(@agenda, @event), ok_button: "enregistrer" %></span></p>
+  </div>
+</div>
+
+<br>
+
+<div class="additionals-links center">
+  <%= link_to "&larr;".html_safe+t('user.agenda_back'),
+      user_agenda_path(@agenda.user, @agenda, set_date: @event.start_at) %>
+</div>

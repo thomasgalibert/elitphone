@@ -239,3 +239,9 @@ form.signup-form{
     }
   }
 }
+
+//////// Best in place additionals css //////////////
+
+.best_in_place{
+  @include cursor();
+}

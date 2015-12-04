@@ -102,7 +102,8 @@ class EventsController < ApplicationController
        :agenda_id,
        :status,
        :recurring_status,
-       :is_recurring
+       :is_recurring,
+       :comments
        )
     end
 end

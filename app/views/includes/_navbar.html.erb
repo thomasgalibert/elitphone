@@ -1,6 +1,6 @@
 <nav class="topbar">
   <ul class="nav-left">
-    <li><%= link_to image_tag(current_user.gravatar_url), root_path, class: "icon-link-logo gravatar" %></li>
+    <li><%= link_to image_tag("https://s3.amazonaws.com/divaveo/icons/men/man2.png"), root_path, class: "icon-link-logo gravatar" %></li>
     <li><%= display_link_company %></li>
   </ul>
 
@@ -8,6 +8,9 @@
     <% if current_user %>
       <li><%= link_to t('menu.cabinets'), company_users_path(current_company, role: "cabinet") %></li>
       <li><%= link_to t('menu.patients'), company_patients_path(current_company) %></li>
+      <% if current_user.admin? %>
+        <li><%= link_to t('menu.users'), company_users_path(current_company) %></li>
+      <% end %>
     <% end %>
     <li><%= render 'agendas/search_form' %></li>
   </ul>

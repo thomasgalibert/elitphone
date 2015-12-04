@@ -21,6 +21,7 @@
 
   <% unless @event.new_record? %>
     <p><%= link_to t('event.delete'), agenda_event_path(@agenda, @event), method: :delete, class: "btn--alert" %></p>
+    <p><%= link_to t('event.show'), agenda_event_path(@agenda, @event), class: "btn--primary" %></p>
   <% end %>
 
 <% end %>

@@ -109,8 +109,18 @@ h1{
   color: $primary;
   text-align: center;
   font-size: 3em;
-  margin: 0.1em 0em 0.5em 0em;
+  margin: 0.1em 0em 0.3em 0em;
   padding: 0;
+}
+
+h2{
+  &.subtitle{
+    color: $black;
+    text-align: center;
+    font-size: 1.5em;
+    margin: 0em 0em 0.5em 0em;
+    padding: 0;
+  }
 }
 
 .buttons{
@@ -121,4 +131,15 @@ h1{
 
 .small-text{
   font-size: 0.8em;
+}
+
+.center{
+  text-align: center;
+}
+
+.small-comment{
+  font-style: italic;
+  font-size: 0.8em;
+  padding-top: 5px;
+  color: lighten($black, 50%);
 }

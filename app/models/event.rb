@@ -1,5 +1,4 @@
 class Event < ActiveRecord::Base
-
   # VALIDATIONS
   validates :agenda_id, :patient_id, :start_at, :end_at, presence: true
 
@@ -19,6 +18,12 @@ class Event < ActiveRecord::Base
   after_destroy :broadcast_event
 
   # COMPUTED METHODS
+  def gap
+    "(#{ActionController::Base.helpers.localize(self.start_at, format: :short_time)} - #{ActionController::Base.helpers.localize(self.end_at, format: :short_time)})"
+  end
+
+  STATUTS = [["pending", I18n.t('event.statuts.pending')], ["confirmed", I18n.t('event.statuts.confirmed')], ["rejected", I18n.t('event.statuts.rejected')]]
+
   def confirm!
     self.status = "confirmed"
     self.save!

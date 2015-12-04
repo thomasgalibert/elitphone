@@ -31,10 +31,14 @@ fr:
       long_time: "%H heure(s) et %M minutes"
       only_minutes: "%M minutes"
       only_hours: "%H heure(s)"
+      only_second: "%S"
+      only_month: "%B"
+      only_day_name: "%A"
+      only_day_number: "%d"
       short: "%d/%m/%Y"
+      short_time: "%d/%m/%Y à %H:%M"
       long: "%A %d %B %Y %H:%M:%S %Z"
       long_ordinal: "%A %d %B %Y %H:%M:%S %Z"
-      only_second: "%S"
       calendar: "%a %e %b %Y"
       weeknumber: "%V"
     am: 'am'
@@ -60,8 +64,8 @@ fr:
         one:   "1 minute"
         other: "{{count}} minutes"
       about_x_hours:
-        one:   "environ une heure"
-        other: "environ {{count}} heures"
+        one:   "une heure"
+        other: "{{count}} heures"
       x_days:
         one:   "1 jour"
         other: "{{count}} jours"
@@ -255,6 +259,8 @@ fr:
 
   menu:
     cabinets: "Cabinets"
+    patients: "Patients"
+    users: "Utilisateurs"
 
   account:
     lost_password: "Mot de passe perdu ?"
@@ -272,18 +278,24 @@ fr:
     edit: "Modifier le rendez-vous"
     delete: "Supprimer le rendez-vous"
     day: "Détail des rendez-vous"
+    show: "Détails du RDV"
     prompts:
       duration: "-- sélectionner la durée --"
     flash:
       create: "Rendez-vous pris avec succès"
       update: "Rendez-vous modifié avec succès"
       destroy: "Rendez-vous supprimé avec succès"
+    statuts:
+      pending: "en attente"
+      confirmed: "confirmé"
+      rejected: "rejeté"
 
   user:
     cabinet_new: "Ajouter un cabinet"
     agenda_new: "Ajouter un agenda"
     cabinets_back: " Retour à la liste des cabinets"
     agendas_back: " Retour à la liste des agendas"
+    agenda_back: " Retour à l'agenda"
     agendas_week_back: "Retour vue semaine"
     list_cabinets: "Liste des cabinets"
     list_agendas: "Liste des agendas"

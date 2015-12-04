@@ -26,6 +26,10 @@ class Patient < ActiveRecord::Base
     "+33#{tel[1..-1].gsub(/\s+/, "")}"
   end
 
+  def ziptown
+    "#{zipcode} - #{town}"
+  end
+
   def check_for_events_pending
     if pending_event
       pending_event.notify_host(true)

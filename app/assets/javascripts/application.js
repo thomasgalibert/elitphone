@@ -14,6 +14,7 @@
 //= require jquery.turbolinks
 //= require jquery_ujs
 //= require jquery-ui
+//= require best_in_place
 //= require autocomplete-rails
 //= require jasny-bootstrap.min
 //= require turbolinks

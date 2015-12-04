@@ -20,7 +20,7 @@ module ApplicationHelper
   # Display link company if current_user
   def display_link_company
     if current_user
-      link_to(current_company.name, '#')
+      link_to(current_user.email, '#')
     else
       ""
     end
@@ -55,6 +55,10 @@ module ApplicationHelper
   # Display the title inside H1 tags if content title exists
   def display_title
     content_for(:title) ? content_tag(:h1, content_for(:title)) : ""
+  end
+
+  def display_subtitle
+    content_for(:subtitle) ? content_tag(:h2, content_for(:subtitle), class: "subtitle") : ""
   end
 
   # Display title form for resource depending on new record or not

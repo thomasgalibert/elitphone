@@ -10,6 +10,10 @@
   $('#agenda_name').bind 'railsAutocomplete.select', (event, data) ->
     window.location.replace("/agendas/#{data.item.id}?user_id=#{data.item.user_id}")
 
+@initBestInPlace = ->
+  $('.best_in_place').best_in_place()
+
 jQuery ->
   closeFlash()
   showAgenda()
+  initBestInPlace()
