@@ -6,6 +6,10 @@ class CabinetDetail < ActiveRecord::Base
   # Relationships
   belongs_to :user, optional: true
 
+  def ziptown
+    "#{zipcode} - #{town}"
+  end
+
   SPECIALTIES = [
     :addictologie,
     :alcoologie,

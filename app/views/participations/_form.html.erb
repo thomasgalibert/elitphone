@@ -1,0 +1,16 @@
+<%= simple_form_for [@organisation, @participation], html: {class: "signup-form small"} do |f| %>
+
+  <%= render "/includes/errors", object: @participation %>
+
+  <fieldset>
+    <legend><%= t('organisation.legend') %></legend>
+    <%= f.association :user, label_method: :longname, prompt: t('simple_form.prompts.participation.user') %>
+  </fieldset>
+
+  <%= f.submit class: "btn--success" %>
+
+  <div class="additionals-links">
+    <%= link_to "&larr;".html_safe+t('user.organisation_back'),
+        company_user_path(@company, @organisation.user) %>
+  </div>
+<% end %>

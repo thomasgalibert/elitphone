@@ -4,7 +4,11 @@
 
   <div class="form-title">
     <%= fa_stacked_icon "pencil inverse", base: "circle", class: "fa-1x" %>
-    <%= t('user.cabinet_new') %>
+    <% if @user.new_record? %>
+      <%= t('user.cabinet_new') %>
+    <% else %>
+      <%= t('user.edit') %>
+    <% end %>
   </div>
 
   <div class="cols">

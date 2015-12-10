@@ -13,4 +13,5 @@ class Company < ActiveRecord::Base
     accepts_nested_attributes_for :users
     has_many :agendas
     has_many :patients
+    has_many :organisations
 end

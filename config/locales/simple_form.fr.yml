@@ -59,6 +59,11 @@ fr:
         zipcode: "Code postal"
         town: "Ville"
         birthday: "Date de naissance"
+      organisation:
+        name: "Nom"
+        description: "Description"
+      participation:
+        user: "Ajouter la personne suivante :"
     placeholders:
       company:
         name: "SARL Callme"
@@ -97,11 +102,16 @@ fr:
         street: "45 impasse des oliviers"
         zipcode: "11000"
         town: "Narbonne"
+      organisation:
+        name: "SCP McNamara et Troy"
+        description: "Cabinet de chirurgie esthétique"
     prompts:
       patient:
         gender: "-- choisissez la civilité --"
       event:
         patient: "-- choississez un patient --"
+      participation:
+        user: "-- choisissez une personne dans la liste --"
     options:
       user:
         role:

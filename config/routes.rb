@@ -1,5 +1,11 @@
 Rails.application.routes.draw do
 
+  resources :participations
+
+  resources :organisations do
+    resources :participations
+  end
+
   resources :patients
 
   resources :agendas do
@@ -20,9 +26,12 @@ Rails.application.routes.draw do
 
   # COMPANIES
   resources :companies do
-    resources :users
+    resources :users do
+      resources :organisations
+    end
     resources :agendas
     resources :patients
+    resources :organisations
   end
 
   # EVENTS

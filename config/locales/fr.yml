@@ -296,14 +296,20 @@ fr:
     cabinets_back: " Retour à la liste des cabinets"
     agendas_back: " Retour à la liste des agendas"
     agenda_back: " Retour à l'agenda"
+    organisation_back: " Retour à la fiche utilisateur"
     agendas_week_back: "Retour vue semaine"
     list_cabinets: "Liste des cabinets"
     list_agendas: "Liste des agendas"
+    back_to_list: "Retour à liste des utilisateurs"
+    organisations: "Organisations"
+    participations: "Participations"
+    edit: "Modifier mes informations personnelles"
     legends:
       cabinet_perso: "Information utilisateur"
       cabinet_details: "Détails du cabinet"
     flashes:
       create: "Cabinet enregistré avec succès !"
+      update: "Informations mises à jour avec succès !"
     ths:
       cabinet_name: "Nom du cabinet"
       email: "Email"
@@ -334,6 +340,20 @@ fr:
       perso: "Informations personnelles"
       admin: "Informations administratives"
 
+  organisation:
+    add: "Ajouter une organisation"
+    add_member: "Ajouter une personne"
+    new: "Nouvelle organisation"
+    legend: "Détails"
+    flashes:
+      create: "Organisation enregistrée avec succès !"
+      update: "Organisation modifiée avec succès !"
+      destroy: "Organisation supprimée avec succès !"
+
+  participation:
+    add: "Ajouter une personne"
+    new: "Nouveau membre de l'organisation"
+
   helpers:
     submit:
       event:
@@ -351,3 +371,9 @@ fr:
       patient:
         create: "Enregistrer le patient"
         update: "Mettre à jour le patient"
+      organisation:
+        create: "Enregistrer l'organisation"
+        update: "Mettre à jour l'organisation"
+      participation:
+        create: "Ajouter le membre"
+        update: "Mettre à jour le membre"

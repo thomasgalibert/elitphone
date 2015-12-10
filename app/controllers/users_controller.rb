@@ -1,6 +1,6 @@
 class UsersController < ApplicationController
   authorize_resource
-  before_action :set_user, only: [:edit, :update]
+  before_action :set_user, only: [:edit, :update, :show]
 
   def index
     role = init_role(params[:role])
@@ -19,7 +19,12 @@ class UsersController < ApplicationController
 
   def update
     @user.update!(user_params)
-    load_users_and_render_index(@user.role)
+    if @user == current_user
+      flash[:success] = t('user.flashes.update')
+      redirect_to company_user_path(current_company, @user)
+    else
+      load_users_and_render_index(@user.role)
+    end
   end
 
   private

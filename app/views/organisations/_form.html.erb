@@ -1,0 +1,18 @@
+<%= simple_form_for [@company, @user, @organisation], html: {class: "signup-form small"} do |f| %>
+
+  <%= render "/includes/errors", object: @organisation %>
+
+  <fieldset>
+    <legend><%= t('organisation.legend') %></legend>
+    <%= f.input :name %>
+    <%= f.input :description %>
+    <%= f.input :user_id, as: :hidden, input_html: {value: @user.id} %>
+  </fieldset>
+
+  <%= f.submit class: "btn--success" %>
+
+  <div class="additionals-links">
+    <%= link_to "&larr;".html_safe+t('user.organisation_back'),
+        company_user_path(@company, @user) %>
+  </div>
+<% end %>

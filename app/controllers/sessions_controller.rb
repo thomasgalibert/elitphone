@@ -8,6 +8,7 @@ class SessionsController < ApplicationController
     user = User.find_by_email(params[:email])
     if user && user.authenticate(params[:password])
       session[:user_id] = user.id
+      cookies.signed[:user_id] = user.id
       flash[:success] = "#{t('session.flash.login')} #{user.firstname} !!"
       redirect_to root_path
     else
@@ -18,6 +19,7 @@ class SessionsController < ApplicationController
 
   def destroy
     session[:user_id] = nil
+    cookies.signed[:user_id] = nil
     flash[:success] = t('session.flash.logout')
     redirect_to login_url
   end

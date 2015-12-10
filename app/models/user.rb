@@ -18,6 +18,9 @@ class User < ActiveRecord::Base
   has_one :cabinet_detail
   accepts_nested_attributes_for :cabinet_detail
   has_many :agendas
+  has_many :organisations
+  has_many :participations
+  has_many :participated_organisations, through: :participations, source: :organisation
 
   # Callbacks
   before_save :check_is_admin?

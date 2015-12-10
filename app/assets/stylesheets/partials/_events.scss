@@ -117,3 +117,20 @@
     }
   }
 }
+
+.user-wrapper{
+  margin: 0 auto;
+  background: $white;
+  width: 60%;
+  padding: 1.5em;
+  border: 1px solid $bottom-input;
+  @include border-radius();
+  .user-details{
+    padding-right: 1em;
+    hr.style-two{
+      border: 0;
+      height: 1px;
+      background: darken(#F2F2F2, 10%);
+    }
+  }
+}
