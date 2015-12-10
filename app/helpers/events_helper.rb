@@ -13,13 +13,13 @@ module EventsHelper
       content_tag(:em, l(from, format: :only_month))+
       content_tag(:strong, l(from, format: :only_day_number))+
       content_tag(:span, l(from, format: :only_day_name))+
-      content_tag(:cite, "#{l(from, format: :time)} - #{display_gap(from, to)}")
+      content_tag(:cite, "#{l(from, format: :time)} - #{display_gap_calendar(from, to)}")
     end
   end
 
   private
 
-    def display_gap(from, to)
+    def display_gap_calendar(from, to)
       gap = ((to - from)*1440).to_f
       display_hours_and_minutes(gap)
     end

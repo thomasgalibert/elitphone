@@ -48,6 +48,9 @@ Rails.application.configure do
   # Raises helpful error messages.
   config.assets.raise_runtime_errors = true
 
+  # HEROKU : used to Cable create consumer method
+  config.web_socket_server_url = 'ws://localhost:28080'
+
   # Raises error for missing translations
   # config.action_view.raise_on_missing_translations = true
 end

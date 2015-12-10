@@ -103,7 +103,7 @@ class Calendar < Struct.new(:view, :date, :step, :events, :start_hour, :end_hour
             # a) ... it ends INSIDE the cell
             if event.end_at < end_time
               name << content_tag(:div,
-              "... #{event.patient.longname} (#{l(event.start_at, format: :time)})",
+              "... #{event.patient.longname} (#{l(event.end_at, format: :time)})",
               class: "rdv active")
             # b) ... it takes all the cell
             else
