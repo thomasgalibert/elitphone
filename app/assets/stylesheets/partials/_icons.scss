@@ -13,3 +13,17 @@
     font-size: 0.8em;
   }
 }
+
+a.red-icon{
+  color: $alert;
+  &:hover{
+    color: $alert;
+  }
+}
+
+a.black-icon{
+  color: $black;
+  &:hover{
+    color: $black;
+  }
+}

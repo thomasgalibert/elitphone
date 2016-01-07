@@ -12,6 +12,13 @@ class ParticipationsController < ApplicationController
     redirect_to company_user_path(@company, @organisation.user)
   end
 
+  def destroy
+    participation = @organisation.participations.find(params[:id])
+    participation.destroy
+    flash[:success] = t('user.flashes.destroy_participation')
+    redirect_to company_user_path(current_company, @organisation.user)
+  end
+
   private
 
     def set_company

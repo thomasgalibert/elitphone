@@ -1,0 +1,66 @@
+<!-- Organisation headers and add button -->
+<h3><%= fa_stacked_icon "users inverse", base: "circle" %> <%= t('user.organisations') %></h3>
+<p><%= link_to t('organisation.add'), new_company_user_organisation_path(current_company, @user), class: "btn--success" %></p>
+
+<!-- Display organisations details -->
+<% for organisation in @user.organisations %>
+  <p><strong><%= organisation.name %> (<%= organisation.owner %>)</strong></p>
+  <hr>
+
+  <!-- Display users participating to the organisation -->
+  <% for user in organisation.users %>
+    <p>
+      <%= display_icon_role(user) %>  <%= user.longname %>
+
+      <span class="user-organisation-icons">
+        <% if user.secretary? %>
+
+          <%= link_to_icon '',
+              edit_company_user_path(current_company, user),
+              icon: "pencil-square", class: "black-icon" %>
+
+          <%= link_to_icon '',
+              company_user_path(current_company, user),
+              method: :delete, data: {confirm: t('form.confirm')},
+              icon: "times-circle", class: "red-icon" %>
+
+        <% elsif user.cabinet? %>
+          <% participation = Participation.where(
+                organisation_id: organisation,
+                user_id: user).first %>
+
+          <%= link_to_icon '',
+              organisation_participation_path(organisation, participation),
+              method: :delete, data: {confirm: t('form.confirm')},
+              icon: "times-circle", class: "red-icon" %>
+
+        <% end %>
+      </span>
+    </p>
+
+  <% end %>
+
+  <!-- Display links to add doctors and secretaries -->
+  <p>
+    <%= link_to_icon t('organisation.add_member'),
+        new_organisation_participation_path(organisation),
+        class: "btn--tiny--default", icon: "stethoscope" %>
+
+    <%= link_to_icon t('organisation.add_secretary'),
+        new_company_user_path(
+          current_company,
+          role: "secretary",
+          organisation: organisation),
+        class: "btn--tiny--default", icon: "user-plus" %>
+  </p>
+  <!-- End of links -->
+
+<% end %>
+
+<hr>
+
+<!-- Display the organisations to which I am partipating -->
+<h3><%= fa_stacked_icon "hand-peace-o inverse", base: "circle" %> <%= t('user.participations') %></h3>
+<% for organisation in @user.participated_organisations %>
+  <p><%= fa_icon "arrow-circle-o-right" %> <%= organisation.name %></p>
+<% end %>

@@ -13,7 +13,7 @@ class Event < ActiveRecord::Base
 
 
   # CALLBACKS
-  # after_save :send_reminder
+  after_save :send_reminder
   after_save :broadcast_event
   after_destroy :broadcast_event
 
@@ -36,8 +36,6 @@ class Event < ActiveRecord::Base
 
   def send_reminder
     ReminderJob.perform_later(self.to_global_id.to_s)
-    self.status = "pending"
-    self.save!
   end
 
   def broadcast_event

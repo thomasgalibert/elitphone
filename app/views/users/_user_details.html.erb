@@ -1,0 +1,35 @@
+<p>
+  <%= link_to_icon t('user.access_agendas'),
+            user_agendas_path(@user),
+            icon: "calendar", class: "btn--primary" %>
+</p>
+
+<br>
+
+<p>
+  <%= fa_stacked_icon "at inverse", base: "circle" %>
+  <%= @user.email %>
+</p>
+<p>
+  <%= fa_stacked_icon "lock inverse", base: "circle" %>
+  <%= @user.role %>
+</p>
+<p>
+  <%= fa_stacked_icon "home inverse", base: "circle" %>
+  <%= @user.cabinet_detail.street %>
+</p>
+<p>
+  <%= fa_stacked_icon "bank inverse", base: "circle" %>
+  <%= @user.cabinet_detail.ziptown %>
+</p>
+<p>
+  <%= fa_stacked_icon "phone inverse", base: "circle" %>
+  <%= @user.cabinet_detail.tel %>
+</p>
+<p>
+  <%= fa_stacked_icon "stethoscope inverse", base: "circle" %>
+  <%= t "simple_form.options.cabinet_detail.specialty.#{@user.cabinet_detail.specialty}" %>
+</p>
+<p>
+  <%= link_to t('user.edit'), edit_company_user_path(current_company, @user), class: "btn--tiny--warning" %>
+</p>

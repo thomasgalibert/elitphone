@@ -293,23 +293,29 @@ fr:
   user:
     cabinet_new: "Ajouter un cabinet"
     agenda_new: "Ajouter un agenda"
+    secretary_new: "Ajouter un(e) assistant(e)"
     cabinets_back: " Retour à la liste des cabinets"
     agendas_back: " Retour à la liste des agendas"
     agenda_back: " Retour à l'agenda"
     organisation_back: " Retour à la fiche utilisateur"
+    access_agendas: "Accéder à mes agendas"
+    profile_back: " Retour sur mon compte"
     agendas_week_back: "Retour vue semaine"
     list_cabinets: "Liste des cabinets"
     list_agendas: "Liste des agendas"
     back_to_list: "Retour à liste des utilisateurs"
     organisations: "Organisations"
     participations: "Participations"
-    edit: "Modifier mes informations personnelles"
+    edit: "Modifier les informations de l'utilisateur"
     legends:
       cabinet_perso: "Information utilisateur"
       cabinet_details: "Détails du cabinet"
     flashes:
       create: "Cabinet enregistré avec succès !"
       update: "Informations mises à jour avec succès !"
+      create_secretary: "Assistant(e) enregistré(e) avec succès !"
+      destroy: "Assistant(e) supprimé(e) avec succès !"
+      destroy_participation: "Autorisation d'accès à votre organisation retirée !"
     ths:
       cabinet_name: "Nom du cabinet"
       email: "Email"
@@ -342,7 +348,8 @@ fr:
 
   organisation:
     add: "Ajouter une organisation"
-    add_member: "Ajouter une personne"
+    add_member: "Ajouter un confrère"
+    add_secretary: "Ajouter un(e) assistant(e)"
     new: "Nouvelle organisation"
     legend: "Détails"
     flashes:

@@ -4,7 +4,7 @@
 
   <fieldset>
     <legend><%= t('organisation.legend') %></legend>
-    <%= f.association :user, label_method: :longname, prompt: t('simple_form.prompts.participation.user') %>
+    <%= f.association :user, collection: @company.users.cabinets,label_method: :longname, prompt: t('simple_form.prompts.participation.user') %>
   </fieldset>
 
   <%= f.submit class: "btn--success" %>

@@ -1,6 +1,6 @@
 class UsersController < ApplicationController
   authorize_resource
-  before_action :set_user, only: [:edit, :update, :show]
+  before_action :set_user, only: [:edit, :update, :show, :destroy]
 
   def index
     role = init_role(params[:role])
@@ -8,13 +8,16 @@ class UsersController < ApplicationController
   end
 
   def new
-    @user = current_company.users.new(role: params[:role])
+    @user = current_company.users.new(
+      role: params[:role],
+      organisation_id: params[:organisation]
+    )
     load_cabinet_detail(@user)
   end
 
   def create
     @user = current_company.users.create!(user_params)
-    load_users_and_render_index(@user.role)
+    load_users_and_render_index(@user)
   end
 
   def update
@@ -23,8 +26,16 @@ class UsersController < ApplicationController
       flash[:success] = t('user.flashes.update')
       redirect_to company_user_path(current_company, @user)
     else
-      load_users_and_render_index(@user.role)
+      load_users_and_render_index(@user)
     end
+  end
+
+  def destroy
+    master_user = @user.participated_organisations.first.user
+    @user.participations.destroy_all
+    @user.destroy
+    flash[:success] = t('user.flashes.destroy')
+    redirect_to company_user_path(current_company, master_user)
   end
 
   private
@@ -41,13 +52,20 @@ class UsersController < ApplicationController
       @users = role == "all" ? current_company.users : current_company.users.where(role: role)
     end
 
-    def load_users_and_render_index(role)
-      load_users(role)
-      render :index, change: "users"
+    def load_users_and_render_index(user)
+      if user.role == "cabinet"
+        load_users(user.role)
+        render :index, change: "users"
+      elsif user.role == "secretary"
+        flash[:success] = t('user.flashes.create_secretary')
+        redirect_to company_user_path(
+          current_company,
+          user.participated_organisations.first.user)
+      end
     end
 
     def load_cabinet_detail(user)
-      if user.cabinet_detail.nil?
+      if user.cabinet_detail.nil? && user.cabinet?
         user.build_cabinet_detail
       end
     end
@@ -60,6 +78,7 @@ class UsersController < ApplicationController
         :role,
         :password,
         :password_confirmation,
+        :organisation_id,
         cabinet_detail_attributes: [
           :id,
           :name,

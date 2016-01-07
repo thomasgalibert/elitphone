@@ -2,50 +2,11 @@
 
 <div class="user-wrapper cols">
   <div class="user-details">
-    <p>
-      <%= fa_stacked_icon "at inverse", base: "circle" %>
-      <%= @user.email %>
-    </p>
-    <p>
-      <%= fa_stacked_icon "lock inverse", base: "circle" %>
-      <%= @user.role %>
-    </p>
-    <p>
-      <%= fa_stacked_icon "home inverse", base: "circle" %>
-      <%= @user.cabinet_detail.street %>
-    </p>
-    <p>
-      <%= fa_stacked_icon "bank inverse", base: "circle" %>
-      <%= @user.cabinet_detail.ziptown %>
-    </p>
-    <p>
-      <%= fa_stacked_icon "phone inverse", base: "circle" %>
-      <%= @user.cabinet_detail.tel %>
-    </p>
-    <p>
-      <%= fa_stacked_icon "stethoscope inverse", base: "circle" %>
-      <%= t "simple_form.options.cabinet_detail.specialty.#{@user.cabinet_detail.specialty}" %>
-    </p>
-    <p>
-      <%= link_to t('user.edit'), edit_company_user_path(current_company, @user), class: "btn--tiny--warning" %>
-    </p>
+    <%= render partial: 'user_details' %>
   </div>
+
   <div class="user-organisations">
-    <h3><%= fa_stacked_icon "users inverse", base: "circle" %> <%= t('user.organisations') %></h3>
-    <p><%= link_to t('organisation.add'), new_company_user_organisation_path(current_company, @user), class: "btn--success" %></p>
-    <% for organisation in @user.organisations %>
-      <p><strong><%= organisation.name %> (<%= organisation.owner %>)</strong></p>
-      <hr>
-      <% for user in organisation.users %>
-        <p><%= user.email %></p>
-      <% end %>
-      <p><%= link_to t('organisation.add_member'), new_organisation_participation_path(organisation), class: "btn--tiny--default" %></p>
-    <% end %>
-    <hr>
-    <h3><%= fa_stacked_icon "hand-peace-o inverse", base: "circle" %> <%= t('user.participations') %></h3>
-    <% for organisation in @user.participated_organisations %>
-      <p><%= fa_icon "arrow-circle-o-right" %> <%= organisation.name %></p>
-    <% end %>
+    <%= render partial: 'user_organisations' %>
   </div>
 </div>
 

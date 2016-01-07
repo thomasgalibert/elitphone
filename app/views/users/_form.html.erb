@@ -1,11 +1,15 @@
-<%= simple_form_for [current_company, @user], html: {class: "signup-form"} do |f| %>
+<%= simple_form_for [current_company, @user], html: {class: "signup-form #{display_class_secretary(@user)}"} do |f| %>
 
   <%= render "/includes/errors", object: @user %>
 
   <div class="form-title">
     <%= fa_stacked_icon "pencil inverse", base: "circle", class: "fa-1x" %>
     <% if @user.new_record? %>
-      <%= t('user.cabinet_new') %>
+      <% if params[:role] == "secretary" %>
+        <%= t('user.secretary_new') %>
+      <% else %>
+        <%= t('user.cabinet_new') %>
+      <% end %>
     <% else %>
       <%= t('user.edit') %>
     <% end %>
@@ -14,31 +18,55 @@
   <div class="cols">
 
     <fieldset>
-      <legend><%= t('user.legends.cabinet_perso') %></legend>
+      <% if @user.secretary? && @user.new_record? %>
+        <legend><%= current_company.organisations.find(@user.organisation_id).name %></legend>
+      <% elsif @user.secretary? %>
+        <legend><%= current_company.organisations.find(@user.participated_organisations.first).name %></legend>
+      <% else %>
+        <legend><%= t('user.legends.cabinet_perso') %></legend>
+      <% end %>
+
       <%= f.input :email, autofocus: true %>
       <div class="two-cols-fields">
         <%= f.input :name %>
         <%= f.input :firstname %>
       </div>
       <%= f.input :role, as: :hidden %>
+      <%= f.input :organisation_id, as: :hidden %>
       <%= f.input :password %>
       <%= f.input :password_confirmation %>
     </fieldset>
 
-    <fieldset>
-      <legend><%= t('user.legends.cabinet_details') %></legend>
-      <%= f.simple_fields_for :cabinet_detail do |builder| %>
-        <%= render 'cabinet_detail_fields', f: builder %>
-      <% end %>
-    </fieldset>
+    <% unless @user.secretary? %>
+      <fieldset>
+        <legend><%= t('user.legends.cabinet_details') %></legend>
+        <%= f.simple_fields_for :cabinet_detail do |builder| %>
+          <%= render 'cabinet_detail_fields', f: builder %>
+        <% end %>
+      </fieldset>
+    <% end %>
 
   </div>
 
   <%= f.submit class: "btn--success" %>
 
   <div class="additionals-links">
-    <%= link_to "&larr;".html_safe+t('user.cabinets_back'),
-        company_users_path(current_company, role: "cabinet") %>
+    <% if current_user.admin? && @user.cabinet? %>
+      <%= link_to "&larr;".html_safe+t('user.cabinets_back'),
+          company_users_path(current_company, role: "cabinet") %>
+    <% elsif @user.secretary? && @user.new_record? %>
+      <%= link_to "&larr;".html_safe+t('user.profile_back'),
+          company_user_path(
+            current_company,
+            current_company.organisations.find(@user.organisation_id).user
+          ) %>
+    <% elsif @user.secretary? %>
+      <%= link_to "&larr;".html_safe+t('user.profile_back'),
+          company_user_path(
+            current_company,
+            current_company.organisations.find(@user.participated_organisations.first).user
+          ) %>
+    <% end %>
   </div>
 
 <% end %>
