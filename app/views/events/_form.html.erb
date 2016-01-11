@@ -4,12 +4,16 @@
   <% if @event.new_record? %>
     <%= f.input :start_at, default: @date_ref %>
     <%= f.input :end_at, default: @date_ref+@agenda.step.minutes %>
+    <%= f.input :created_by, as: :hidden, input_html: {value: current_user.id} %>
   <% else %>
     <%= f.input :start_at %>
     <%= f.input :end_at %>
+    <%= f.input :updated_by, as: :hidden, input_html: {value: current_user.id} %>
   <% end %>
 
   <%= hidden_field_tag :set_date, @date_ref %>
+
+
 
   <% if request.referrer =~ /show_day/ %>
     <%= hidden_field_tag :view_action, "day" %>

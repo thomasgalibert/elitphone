@@ -1,0 +1,17 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  event_id: 1
+  user_id: 1
+  start_at: 2016-01-11 11:25:45
+  end_at: 2016-01-11 11:25:45
+  status: MyString
+  comments: MyText
+
+two:
+  event_id: 1
+  user_id: 1
+  start_at: 2016-01-11 11:25:45
+  end_at: 2016-01-11 11:25:45
+  status: MyString
+  comments: MyText

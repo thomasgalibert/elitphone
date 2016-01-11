@@ -21,6 +21,7 @@ class User < ActiveRecord::Base
   has_many :organisations
   has_many :participations, dependent: :destroy
   has_many :participated_organisations, through: :participations, source: :organisation
+  has_many :tracks
 
   # Callbacks
   before_save :check_is_admin?

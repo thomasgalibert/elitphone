@@ -3,6 +3,7 @@ module UsersHelper
     case user.role
       when "cabinet" then fa_icon('stethoscope')
       when "secretary" then fa_icon('paperclip')
+      when "admin" then fa_icon('user-secret')
     else "--"
     end
   end

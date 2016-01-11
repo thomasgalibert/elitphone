@@ -29,6 +29,13 @@
 
     <hr class="style-two">
     <p>Nombre de rdvs pris : <%= @event.patient.events.count %></p>
+
+    <p class="small">RDV pris par
+       <%= display_icon_role(User.find(@event.created_by)) if @event.created_by %>
+       <%= @event.created_by_name if @event.created_by %>
+       le <%=l @event.created_at %>
+    </p>
+
   </div>
   <div class="patient-details">
     <p><strong>Paramètres du rendez-vous</strong></p>
@@ -37,6 +44,18 @@
     <p>Signaler un abus : (prévoir îcones)</p>
     <p>Attacher un fichier : (formulaire upload)</p>
     <p>Ecrire un commentaire : <br> <span class="small-comment"><%= best_in_place @event, :comments, as: :textarea, url: agenda_event_path(@agenda, @event), ok_button: "enregistrer" %></span></p>
+
+    <hr class="style-two">
+    <p><strong>Historique des modifications :</strong></p>
+    <% for track in @event.tracks %>
+      <p class="small">
+        - <%=l track.created_at %> :
+        <%= display_icon_role(track.user) %>
+        <%= track.user.longname %>
+        <br/>
+        Détails des modifications :
+      </p>
+    <% end %>
   </div>
 </div>
 

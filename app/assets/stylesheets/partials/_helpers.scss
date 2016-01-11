@@ -368,3 +368,7 @@ $all-text-inputs: $unquoted-inputs-list;
     @return #ffffff; // Darker background, return light color
   }
 }
+
+.small{
+  font-size: 0.8em;
+}

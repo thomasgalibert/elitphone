@@ -103,7 +103,9 @@ class EventsController < ApplicationController
        :status,
        :recurring_status,
        :is_recurring,
-       :comments
+       :comments,
+       :created_by,
+       :updated_by
        )
     end
 end

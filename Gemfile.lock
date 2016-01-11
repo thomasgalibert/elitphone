@@ -153,6 +153,8 @@ GIT
 GEM
   remote: https://rubygems.org/
   specs:
+    amoeba (3.0.0)
+      activerecord (>= 3.2.6)
     bcrypt (3.1.10)
     builder (3.2.2)
     byebug (8.2.1)
@@ -262,6 +264,7 @@ PLATFORMS
 
 DEPENDENCIES
   actioncable!
+  amoeba
   arel!
   bcrypt (~> 3.1.7)
   best_in_place!

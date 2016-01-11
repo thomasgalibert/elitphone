@@ -50,6 +50,7 @@ gem 'twilio-ruby'
 # Use sanitize
 gem 'sanitize'
 gem 'ice_cube'
+gem 'amoeba'
 
 # Use Capistrano for deployment
 # gem 'capistrano-rails', group: :development
