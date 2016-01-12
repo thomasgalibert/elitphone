@@ -67,6 +67,10 @@ class User < ActiveRecord::Base
     self.role == "secretary" ? true : false
   end
 
+  def operative?
+    self.role == "operative" ? true : false
+  end
+
   def longname
     "#{firstname} #{name}"
   end

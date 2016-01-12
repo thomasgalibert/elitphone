@@ -23,6 +23,7 @@ class EventsController < ApplicationController
   end
 
   def update
+    @event.updated_by = current_user.id
     @event.update!(event_params)
     find_date_and_events(@event)
     # Redirect to day or week view

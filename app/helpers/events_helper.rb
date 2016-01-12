@@ -17,6 +17,14 @@ module EventsHelper
     end
   end
 
+  # Display the changes between the two object
+  # for start_at, end_at, status, comments fields
+  def display_what_changed_to_event(track)
+    "#{l(track.start_at, format: :short_time)} - "+
+    "#{l(track.end_at, format: :short_time)} - "+
+    "#{display_status(track.status)} - #{track.comments}"
+  end
+
   private
 
     def display_gap_calendar(from, to)
@@ -33,6 +41,16 @@ module EventsHelper
         "#{minutes_left} min."
       else
         "#{hours} h #{minutes_left}"
+      end
+    end
+
+    def display_status(status)
+      case status
+        when "pending" then t('event.statuts.pending')
+        when "confirmed" then t('event.statuts.confirmed')
+        when "rejected" then t('event.statuts.rejected')
+        else
+          status
       end
     end
 end

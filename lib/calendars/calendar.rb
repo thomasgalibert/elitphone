@@ -95,7 +95,7 @@ class Calendar < Struct.new(:view, :date, :step, :events, :start_hour, :end_hour
           # 1 - start hour event is the same as the div
           if event.start_at == horaire
             name << content_tag(:div,
-                                event.patient.longname,
+                                "#{view.display_icon_user_colored(event.tracks.last.user_id, event.status)} #{event.patient.longname}".html_safe,
                                 class: "rdv active",
                                 data: {id: event.id})
           # 2- If the event continue to the cells

@@ -134,3 +134,19 @@
     }
   }
 }
+
+.modifications-details{
+  background: #fff9b0;
+}
+
+.pending-colored{
+  color: $warning;
+}
+
+.confirmed-colored{
+  color: $success;
+}
+
+.rejected-colored{
+  color: $alert;
+}
